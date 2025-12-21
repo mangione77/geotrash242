@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>// 242</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
-        /* MOBILE FIRST BASE */
+        /* MOBILE FIRST BASE - SUBTLE ANTIFASCIST PALETTE */
         * {
             margin: 0;
             padding: 0;
@@ -13,394 +14,426 @@
         }
 
         :root {
-            --primary: #0a0a0a;
-            --secondary: #111111;
-            --accent: #00ff9d;
-            --accent-glow: rgba(0, 255, 157, 0.1);
-            --text-primary: #e0e0e0;
-            --text-secondary: #8a8a8a;
-            --text-dim: #444444;
-            --grid-size: 20px;
-            --safe-top: env(safe-area-inset-top, 20px);
-            --safe-bottom: env(safe-area-inset-bottom, 20px);
+            --primary: #111111;
+            --secondary: #1a1a1a;
+            --accent-red: #8b0000;
+            --accent-red-light: #a52a2a;
+            --accent-black: #000000;
+            --accent-white: #d3d3d3;
+            --accent-gold: #b8860b;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --window-bg: #222222;
+            --border-light: #444444;
+            --border-dark: #000000;
+            --terminal-text: #90ee90;
+            --terminal-accent: #ffd700;
         }
 
         body {
             background-color: var(--primary);
             color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+            font-family: 'MS Sans Serif', 'Segoe UI', sans-serif;
             line-height: 1.4;
             overflow-x: hidden;
             min-height: 100vh;
-            padding: var(--safe-top) 0 var(--safe-bottom);
-        }
-
-        /* Mobile Touch Improvements */
-        a, button {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        /* Grid Background - Mobile Optimized */
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            padding: 8px;
             background-image: 
-                linear-gradient(var(--accent-glow) 1px, transparent 1px),
-                linear-gradient(90deg, var(--accent-glow) 1px, transparent 1px);
-            background-size: var(--grid-size) var(--grid-size);
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.15;
-            animation: gridMove 120s linear infinite;
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(139, 0, 0, 0.03) 1px,
+                    rgba(139, 0, 0, 0.03) 2px
+                );
         }
 
-        @keyframes gridMove {
-            0% { transform: translateY(0) translateX(0); }
-            100% { transform: translateY(calc(var(--grid-size) * -1)) translateX(calc(var(--grid-size) * -1)); }
+        /* Windows 98 Window Styling - Subtle Theme */
+        .window {
+            margin-bottom: 16px;
+            max-width: 100%;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.1);
+            border: 1px solid rgba(139, 0, 0, 0.2);
+        }
+
+        .window-title {
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-red-light));
+            color: var(--accent-white);
+            padding: 6px 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
+            border-bottom: 2px solid var(--accent-black);
+        }
+
+        .window-body {
+            background-color: var(--window-bg);
+            padding: 16px;
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
         }
 
         /* Container - Mobile First */
         .container {
             width: 100%;
-            padding: 0 16px;
+            padding: 0 8px;
             margin: 0 auto;
         }
 
-        /* Minimal Header - Mobile Optimized */
+        /* Header */
         .header {
-            padding: 24px 0;
+            padding: 16px 0;
             position: relative;
-            overflow: hidden;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 16px;
-            right: 16px;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                var(--accent) 20%,
-                var(--accent) 80%,
-                transparent
-            );
-            animation: pulseLine 4s ease-in-out infinite;
-        }
-
-        @keyframes pulseLine {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.6; }
         }
 
         .brand {
-            font-size: 1.2rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--text-dim);
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent-white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
             position: relative;
             display: inline-block;
-            padding-left: 28px; /* Increased from 16px for more separation */
         }
 
-        .brand::before {
-            content: '//';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 0.9rem;
-            opacity: 0.8;
-            letter-spacing: 1px;
+        .brand .number {
+            color: var(--accent-gold);
+            font-weight: bold;
         }
 
-        /* Hero Section - Mobile First - FIXED TITLE */
+        /* Hero Section */
         .hero {
-            padding: 60px 0 40px;
+            padding: 40px 0 24px;
             position: relative;
         }
 
         .hero-title {
-            font-size: 1.8rem;
-            font-weight: 300;
+            font-size: 1.6rem;
+            font-weight: bold;
             line-height: 1.3;
-            margin-bottom: 24px;
-            color: var(--text-dim);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px; /* Space between elements */
-            align-items: center;
+            margin-bottom: 16px;
+            color: var(--accent-white);
+            text-align: center;
+            border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+            padding-bottom: 16px;
         }
 
-        .hero-title span {
-            color: var(--accent);
-            margin: 0 4px; /* Added spacing around slashes */
+        .hero-title-line {
+            display: block;
+            margin-bottom: 8px;
+            padding: 4px 0;
+        }
+
+        .hero-title .slash {
+            color: var(--accent-red-light);
+            margin: 0 8px;
+            font-weight: normal;
+            opacity: 0.7;
         }
 
         .hero-subtitle {
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
             max-width: 100%;
             margin: 0 auto;
         }
 
         .hero-subtitle p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(34, 34, 34, 0.9);
+            border: 1px solid var(--accent-red);
+            border-left: 4px solid var(--accent-red-light);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Products Grid - Mobile First */
+        /* Products Grid */
         .products {
-            padding: 40px 0;
+            padding: 24px 0;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
-            margin-top: 32px;
+            gap: 16px;
+            margin-top: 16px;
         }
 
         .product-item {
+            background: rgba(34, 34, 34, 0.9);
+            border: 2px solid;
+            border-color: var(--accent-red) var(--border-dark) var(--border-dark) var(--accent-red);
+            padding: 12px;
             position: relative;
-            min-height: 280px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            overflow: hidden;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.1);
         }
 
         .product-item:hover {
-            border-color: var(--accent);
+            border-color: var(--accent-gold) var(--border-dark) var(--border-dark) var(--accent-gold);
+            box-shadow: 0 0 15px rgba(184, 134, 11, 0.2);
         }
 
         .product-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
-            backdrop-filter: blur(10px);
+            padding: 8px;
         }
 
         .product-code {
             font-family: 'Courier New', monospace;
-            color: var(--accent);
+            color: var(--accent-gold);
             font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-weight: bold;
             margin-bottom: 8px;
-            opacity: 0.9;
+            background: rgba(139, 0, 0, 0.1);
+            padding: 6px 10px;
+            display: inline-block;
+            border: 1px solid var(--accent-red-light);
+            border-radius: 2px;
         }
 
         .product-desc {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
-        /* Terminal Display - Mobile Optimized - FASTER ANIMATION */
+        /* Enhanced Terminal Display */
         .terminal {
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            margin: 40px 0;
+            padding: 24px 0;
+            margin: 24px 0;
         }
 
         .terminal-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 6px;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: linear-gradient(90deg, var(--accent-red), #5a0000);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
         }
 
         .terminal-dot {
-            width: 10px;
-            height: 10px;
+            width: 14px;
+            height: 14px;
+            border: 2px solid;
+            border-color: rgba(255,255,255,0.3) rgba(0,0,0,0.5) rgba(0,0,0,0.5) rgba(255,255,255,0.3);
+            background: #333;
             border-radius: 50%;
-            flex-shrink: 0;
         }
 
-        .terminal-dot:nth-child(1) { background: #ff4444; }
-        .terminal-dot:nth-child(2) { background: #ffaa00; }
-        .terminal-dot:nth-child(3) { background: #00cc44; }
+        .terminal-dot:nth-child(1) { background: var(--accent-red); }
+        .terminal-dot:nth-child(2) { background: var(--accent-gold); }
+        .terminal-dot:nth-child(3) { background: var(--accent-white); }
 
         .terminal-output {
             font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.3;
+            background: #000;
+            color: var(--terminal-text);
+            padding: 16px;
+            border: 3px solid var(--accent-red);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            min-height: 180px;
+            max-height: 250px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: inset 0 0 20px rgba(139, 0, 0, 0.1);
         }
 
         .terminal-line {
-            margin-bottom: 8px; /* Reduced from 12px */
+            margin-bottom: 8px;
             opacity: 0;
-            animation: typeIn 0.2s forwards; /* Changed from 0.4s to 0.2s */
+            animation: typeIn 0.15s forwards;
             word-break: break-word;
         }
 
+        .ascii-art {
+            color: var(--terminal-accent);
+            font-family: monospace;
+            white-space: pre;
+            font-size: 0.7rem;
+            line-height: 1;
+            margin: 10px 0;
+            opacity: 0;
+            animation: typeIn 0.3s forwards;
+        }
+
         @keyframes typeIn {
-            to { opacity: 0.9; }
+            to { opacity: 1; }
         }
 
         .terminal-prompt {
-            color: var(--accent);
+            color: var(--terminal-accent);
             margin-right: 8px;
+            font-weight: bold;
         }
 
         .terminal-text {
-            color: var(--text-secondary);
+            color: var(--terminal-text);
+        }
+
+        .quote {
+            color: var(--accent-gold);
+            font-style: italic;
+            border-left: 2px solid var(--accent-red-light);
+            padding-left: 10px;
+            margin: 10px 0;
+            opacity: 0;
+            animation: typeIn 0.2s forwards;
+        }
+
+        .question {
+            color: var(--accent-white);
+            background: rgba(139, 0, 0, 0.1);
+            padding: 8px;
+            border: 1px dashed var(--accent-red-light);
+            margin: 8px 0;
+            opacity: 0;
+            animation: typeIn 0.25s forwards;
         }
 
         /* Philosophy Section */
         .philosophy {
-            padding: 40px 0 60px;
+            padding: 24px 0 40px;
         }
 
         .philosophy-section {
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeUp 0.6s forwards;
-        }
-
-        .philosophy-section:nth-child(1) { animation-delay: 0.2s; }
-        .philosophy-section:nth-child(2) { animation-delay: 0.4s; }
-        .philosophy-section:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 24px;
+            padding: 16px;
+            background: rgba(34, 34, 34, 0.9);
+            border: 2px solid;
+            border-color: var(--accent-red) var(--border-dark) var(--border-dark) var(--accent-red);
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.1);
         }
 
         .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--accent-red);
             text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
+            gap: 8px;
         }
 
         .philosophy-text {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .philosophy-text span {
-            color: var(--accent);
+            color: var(--accent-gold);
+            font-weight: bold;
         }
 
-        /* Footer - Mobile Optimized */
+        /* Footer */
         .footer {
-            padding: 40px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px 0 16px;
+            border-top: 2px solid var(--accent-red);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 32px;
-            margin-bottom: 40px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .footer-item {
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            text-align: center;
         }
 
         .footer-link {
-            color: inherit;
-            text-decoration: none;
-            position: relative;
             display: inline-block;
-            padding: 4px 0;
+            padding: 10px 20px;
+            background: linear-gradient(180deg, var(--accent-red-light), var(--accent-red));
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            color: var(--accent-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.2s;
         }
 
-        .footer-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .footer-link:hover::after {
-            width: 100%;
+        .footer-link:hover {
+            background: linear-gradient(180deg, var(--accent-red), #5a0000);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+            border-top: 1px solid rgba(139, 0, 0, 0.3);
         }
 
         .copyright {
-            color: var(--text-dim);
+            color: var(--text-secondary);
             font-size: 0.7rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
-        /* Mobile Touch Enhancements */
-        .touch-hint {
+        /* Button Styles */
+        .button-98 {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px;
+            background: linear-gradient(180deg, var(--accent-red-light), var(--accent-red));
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--accent-white);
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .button-98:hover {
+            background: linear-gradient(180deg, var(--accent-red), #5a0000);
+        }
+
+        /* Status Bar */
+        .status-bar {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.3);
-            border-radius: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, var(--accent-red), #5a0000);
+            border-top: 2px solid var(--accent-gold);
+            padding: 6px 12px;
+            font-size: 0.75rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulseHint 2s infinite;
+            justify-content: space-between;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        @keyframes pulseHint {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.6; }
+            color: var(--accent-white);
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
         }
 
         /* RESPONSIVE BREAKPOINTS */
-
-        /* Tablet (≥ 640px) */
         @media (min-width: 640px) {
             .container {
-                padding: 0 24px;
+                padding: 0 16px;
                 max-width: 640px;
             }
             
             .hero-title {
-                font-size: 2.2rem;
-                gap: 16px; /* Increased gap for larger screens */
+                font-size: 2rem;
             }
             
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 28px;
+                gap: 20px;
             }
             
             .footer-grid {
@@ -408,411 +441,449 @@
             }
             
             .brand {
-                font-size: 1.4rem;
-                letter-spacing: 8px;
-                padding-left: 32px; /* Adjusted for larger screen */
+                font-size: 1.8rem;
+            }
+            
+            .terminal-output {
+                font-size: 0.85rem;
             }
         }
 
-        /* Small Desktop (≥ 768px) */
         @media (min-width: 768px) {
             .container {
                 max-width: 768px;
             }
             
             .hero {
-                padding: 80px 0 60px;
+                padding: 60px 0 40px;
             }
             
             .hero-title {
-                font-size: 2.8rem;
-                gap: 20px; /* More space on desktop */
+                font-size: 2.4rem;
             }
             
-            .hero-subtitle {
-                font-size: 1rem;
-                max-width: 600px;
+            .product-grid {
+                gap: 24px;
             }
             
-            .products {
-                padding: 60px 0;
+            .window {
+                margin-bottom: 24px;
             }
             
-            .product-item {
-                min-height: 320px;
-            }
-            
-            .philosophy {
-                padding: 60px 0 80px;
-            }
-            
-            .touch-hint {
-                display: none;
+            .ascii-art {
+                font-size: 0.75rem;
             }
         }
 
-        /* Desktop (≥ 1024px) */
         @media (min-width: 1024px) {
             .container {
                 max-width: 1024px;
             }
             
             .hero-title {
-                font-size: 3.2rem;
-                gap: 24px;
+                font-size: 3rem;
             }
             
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 32px;
             }
             
-            .grid-bg {
-                --grid-size: 30px;
+            body {
+                padding: 16px;
             }
-            
-            .product-content {
-                padding: 24px;
-            }
-            
-            .product-desc {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Large Desktop (≥ 1280px) */
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1200px;
-            }
-            
-            .hero-title {
-                font-size: 3.6rem;
-            }
-            
-            .hero-subtitle {
-                max-width: 700px;
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary: #000000;
-                --secondary: #0a0a0a;
-                --accent-glow: rgba(0, 255, 157, 0.08);
-            }
-        }
-
-        /* Reduced Motion Support */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .grid-bg {
-                animation: none;
-            }
-        }
-
-        /* High Contrast Support */
-        @media (prefers-contrast: high) {
-            :root {
-                --accent: #00ff00;
-                --text-primary: #ffffff;
-                --text-secondary: #cccccc;
-            }
-        }
-
-        /* Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    
-    <header class="header">
-        <div class="container">
-            <div class="brand">GEOTRASH</div>
+    <div class="container">
+        <!-- Header Window -->
+        <div class="window">
+            <div class="window-title">
+                <span>◼</span>
+                GEOTRASH_242.EXE
+            </div>
+            <div class="window-body">
+                <div class="brand">GEOTRASH <span class="number">242</span></div>
+                <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <span style="color: var(--accent-gold)">Urban Resistance Systems</span> • 
+                    <span style="color: var(--accent-red-light)">Critical Textiles</span> • 
+                    <span style="color: var(--accent-white)">Autonomous Structures</span>
+                </p>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1 class="hero-title">
-                    <span>//</span> SURFACE <span>//</span><br>
-                    TREATMENTS <span>//</span><br>
-                    FOR URBAN <span>//</span><br>
-                    CONTACT <span>//</span>
-                </h1>
-                <div class="hero-subtitle">
-                    <p>Constructed layers for metropolitan navigation. Each piece exists as a response to environmental pressures.</p>
-                    <p>Materials selected for their interaction with light, sound, and space. Not designed to be worn, but inhabited.</p>
+        <!-- Hero Window -->
+        <div class="window">
+            <div class="window-title">
+                <span>📁</span>
+                SURFACE_TREATMENTS.WIN
+            </div>
+            <div class="window-body">
+                <div class="hero">
+                    <h1 class="hero-title">
+                        <span class="hero-title-line">
+                            <span class="slash">//</span> TEXTILE <span class="slash">//</span>
+                        </span>
+                        <span class="hero-title-line">
+                            RESISTANCE <span class="slash">//</span>
+                        </span>
+                        <span class="hero-title-line">
+                            THROUGH <span class="slash">//</span>
+                        </span>
+                        <span class="hero-title-line">
+                            FORM <span class="slash">//</span>
+                        </span>
+                    </h1>
+                    <div class="hero-subtitle">
+                        <p>Layered constructions that question surface politics. Each stitch is a decision against passive consumption.</p>
+                        <p>Materials that remember pressure points. Fabrics that teach their own history through wear patterns.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="products">
-            <div class="container">
-                <div class="section-label">STRUCTURES</div>
-                <div class="product-grid">
-                    <div class="product-item" data-delay="0">
-                        <div class="product-content">
-                            <div class="product-code">GT-01 / WEAVE</div>
-                            <p class="product-desc">A dense textile with integrated conductive threads. Responds to atmospheric changes through subtle texture shifts.</p>
+        <!-- Products Window -->
+        <div class="window">
+            <div class="window-title">
+                <span>📦</span>
+                STRUCTURES.DIR
+            </div>
+            <div class="window-body">
+                <div class="products">
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="product-content">
+                                <div class="product-code">RES-01 / ARMOR</div>
+                                <p class="product-desc">Not protection from impact, but from consensus. A textile that questions what it means to be defended.</p>
+                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-content">
+                                <div class="product-code">RES-02 / MEMBRANE</div>
+                                <p class="product-desc">A surface that filters frequencies. What signals do you choose to let through your personal space?</p>
+                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-content">
+                                <div class="product-code">RES-03 / NETWORK</div>
+                                <p class="product-desc">Woven connections that suggest alternative topographies. A map of possible alignments.</p>
+                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Terminal Window -->
+        <div class="window">
+            <div class="window-title">
+                <span>💻</span>
+                DIALOGUE_TERMINAL.COM
+            </div>
+            <div class="window-body">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <span style="margin-left: 12px; font-size: 0.8rem; color: var(--accent-gold);">critical_interface.exe</span>
+                    </div>
+                    <div class="terminal-output" id="terminalOutput">
+                        <!-- Initial content will be populated by JavaScript -->
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">></span> <span class="terminal-text">Initializing dialogue protocol...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Philosophy Windows -->
+        <div class="window">
+            <div class="window-title">
+                <span>📄</span>
+                CONTEXT.TXT
+            </div>
+            <div class="window-body">
+                <div class="philosophy">
+                    <div class="philosophy-section">
+                        <div class="section-label">RESISTANCE AS FORM</div>
+                        <p class="philosophy-text">
+                            When <span>fashion becomes uniform</span>, resistance becomes necessary. We construct garments that refuse to blend into prescribed backgrounds.
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-section">
+                        <div class="section-label">MEMORY IN MATERIAL</div>
+                        <p class="philosophy-text">
+                            Each textile <span>remembers its making</span>. The hands that wove it, the decisions in its construction, the context of its creation.
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-section">
+                        <div class="section-label">AUTONOMOUS SURFACES</div>
+                        <p class="philosophy-text">
+                            These are <span>tools for seeing differently</span>. Not just what you wear, but how you move through contested spaces.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Window -->
+        <div class="window">
+            <div class="window-title">
+                <span>🔗</span>
+                CONNECTIONS.EXE
+            </div>
+            <div class="window-body">
+                <div class="footer">
+                    <div class="footer-grid">
+                        <div class="footer-item">
+                            <a href="#" class="footer-link" onclick="return false">ARCHIVES</a>
+                        </div>
+                        <div class="footer-item">
+                            <a href="#" class="footer-link" onclick="return false">CONTEXT</a>
+                        </div>
+                        <div class="footer-item">
+                            <a href="#" class="footer-link" onclick="return false">DIALOGUE</a>
                         </div>
                     </div>
                     
-                    <div class="product-item" data-delay="100">
-                        <div class="product-content">
-                            <div class="product-code">GT-02 / SHELL</div>
-                            <p class="product-desc">Layered construction with variable opacity. Surface pattern reorganizes based on ambient light frequencies.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="product-item" data-delay="200">
-                        <div class="product-content">
-                            <div class="product-code">GT-03 / MESH</div>
-                            <p class="product-desc">Open structure designed for thermal exchange. Retains memory of urban pathways through material tension.</p>
-                        </div>
+                    <div class="footer-bottom">
+                        <div class="brand" style="font-size: 1.2rem;">GEOTRASH <span class="number">242</span></div>
+                        <div class="copyright">AUTONOMOUS TEXTILE SYSTEMS • CRITICAL FASHION • [RESISTING]</div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="terminal">
-            <div class="container">
-                <div class="terminal-header">
-                    <div class="terminal-dot"></div>
-                    <div class="terminal-dot"></div>
-                    <div class="terminal-dot"></div>
-                </div>
-                <div class="terminal-output">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">></span> <span class="terminal-text">material analysis: urban textile systems</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">></span> <span class="terminal-text">construction: layered response fabrics</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">></span> <span class="terminal-text">purpose: metropolitan interface layers</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="philosophy">
-            <div class="container">
-                <div class="philosophy-section">
-                    <div class="section-label">APPROACH</div>
-                    <p class="philosophy-text">
-                        We work with <span>materials that remember</span> their environment. Each textile carries traces of its context, developing patina through urban interaction.
-                    </p>
-                </div>
-                
-                <div class="philosophy-section">
-                    <div class="section-label">CONSTRUCTION</div>
-                    <p class="philosophy-text">
-                        Pieces are <span>assembled, not manufactured</span>. Seams are placed where tension naturally occurs. Fabrics are selected for their acoustic properties as much as visual.
-                    </p>
-                </div>
-                
-                <div class="philosophy-section">
-                    <div class="section-label">CONTEXT</div>
-                    <p class="philosophy-text">
-                        These are <span>tools for navigation</span> rather than decoration. They exist in dialogue with architecture, weather patterns, and the rhythm of metropolitan movement.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-item">
-                    <a href="#" class="footer-link" onclick="return false">MATERIALS</a>
-                </div>
-                <div class="footer-item">
-                    <a href="#" class="footer-link" onclick="return false">ARCHIVE</a>
-                </div>
-                <div class="footer-item">
-                    <a href="#" class="footer-link" onclick="return false">CONTACT</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="brand">GEOTRASH</div>
-                <div class="copyright">242 — URBAN TEXTILE SYSTEMS</div>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <div class="touch-hint">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
-            <path d="M12 5v14M5 12h14"/>
-        </svg>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div style="color: var(--accent-gold)">▶ CRITICAL SYSTEMS</div>
+        <div style="color: var(--accent-white)" id="statusText">QUESTIONING</div>
+        <div style="color: var(--accent-gold)">◼ ACTIVE</div>
     </div>
 
     <script>
-        // Mobile-first touch interactions
         document.addEventListener('DOMContentLoaded', () => {
-            // Remove touch hint after interaction
-            const touchHint = document.querySelector('.touch-hint');
-            const removeHint = () => {
-                if (touchHint) {
-                    touchHint.style.opacity = '0';
-                    setTimeout(() => touchHint.remove(), 300);
-                }
-                document.removeEventListener('touchstart', removeHint);
-                document.removeEventListener('click', removeHint);
-            };
+            const terminalOutput = document.getElementById('terminalOutput');
             
-            document.addEventListener('touchstart', removeHint, { once: true });
-            document.addEventListener('click', removeHint, { once: true });
-            
-            // Product hover effects for mobile (touch)
-            const products = document.querySelectorAll('.product-item');
-            products.forEach(product => {
-                product.addEventListener('touchstart', () => {
-                    product.style.borderColor = 'var(--accent)';
-                });
-                
-                product.addEventListener('touchend', () => {
-                    setTimeout(() => {
-                        product.style.borderColor = '';
-                    }, 300);
-                });
-            });
-            
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const delay = entry.target.dataset.delay || 0;
-                        setTimeout(() => {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }, delay);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe product items
-            document.querySelectorAll('.product-item').forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(item);
-            });
-            
-            // UPDATED: Terminal animation - faster, random, infinite
-            const terminalOutput = document.querySelector('.terminal-output');
-            const terminalMessages = [
-                "> material analysis: urban textile systems",
-                "> construction: layered response fabrics",
-                "> purpose: metropolitan interface layers",
-                "> status: integrated with environment",
-                "> fabric response: atmospheric",
-                "> texture memory: active",
-                "> urban integration: complete",
-                "> surface treatment: stable",
-                "> system: geotrash_242",
-                "> frequency: synchronized"
+            // ASCII Art Collection
+            const asciiArt = [
+                `┌─────────────────────────────────────┐
+ │                                     │
+ │    THE FUTURE ISN'T WHAT IT USED    │
+ │          TO BE. IT'S BETTER.        │
+ │                                     │
+ └─────────────────────────────────────┘`,
+                `╔═════════════════════════════════════╗
+ ║                                         ║
+ ║   RESISTANCE IS NOT A POSITION TO      ║
+ ║   HOLD, BUT A WAY OF MOVING.           ║
+ ║                                         ║
+ ╚═════════════════════════════════════╝`,
+                `▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ █                                     █
+ █    THINK FOR YOURSELF.             █
+ █    QUESTION EVERYTHING.            █
+ █                                     █
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`
             ];
             
-            function addTerminalLine() {
-                if (!terminalOutput) return;
+            // Max Headroom quotes
+            const maxHeadroomQuotes = [
+                "The future is a forgotten game that nobody remembers the rules to anymore.",
+                "I've seen the future and it's just like the present, only longer.",
+                "Anybody who isn't confused here isn't thinking clearly.",
+                "Confusion is the welcome mat at the door of creativity.",
+                "In the future, everyone will want to be unique, just like everyone else."
+            ];
+            
+            // Engaging questions for users
+            const questions = [
+                "What surfaces in your life need questioning?",
+                "How does what you wear shape how you think?",
+                "When was the last time you questioned a uniform?",
+                "What patterns are you unconsciously repeating?",
+                "Where do you draw the line between fashion and uniform?",
+                "How much of your environment is designed to be unquestioned?",
+                "What would clothing that teaches look like?",
+                "When does protection become confinement?"
+            ];
+            
+            // Deep messages
+            const deepMessages = [
+                "Systems wear down at the seams first. Look closely.",
+                "The most radical fashion is that which refuses to disappear.",
+                "Every stitch is a decision. Every seam, a boundary.",
+                "Textiles remember. What are yours telling you?",
+                "Resistance starts where comfort ends.",
+                "The uniform wants you to forget you're wearing it.",
+                "Critical fashion isn't about what's new, but what's true.",
+                "Weave your own narrative. The loom is waiting."
+            ];
+            
+            let messageQueue = [];
+            let isProcessing = false;
+            
+            // Function to add a terminal element
+            function addTerminalElement(type, content, delay = 0) {
+                setTimeout(() => {
+                    const element = document.createElement('div');
+                    
+                    switch(type) {
+                        case 'ascii':
+                            element.className = 'ascii-art';
+                            element.textContent = content;
+                            element.style.animationDelay = `${delay}s`;
+                            break;
+                            
+                        case 'quote':
+                            element.className = 'quote';
+                            element.innerHTML = `"${content}"`;
+                            element.style.animationDelay = `${delay}s`;
+                            break;
+                            
+                        case 'question':
+                            element.className = 'question';
+                            element.innerHTML = `? ${content}`;
+                            element.style.animationDelay = `${delay}s`;
+                            break;
+                            
+                        case 'message':
+                            element.className = 'terminal-line';
+                            element.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${content}</span>`;
+                            element.style.animationDelay = `${delay}s`;
+                            break;
+                            
+                        case 'system':
+                            element.className = 'terminal-line';
+                            element.innerHTML = `<span class="terminal-prompt" style="color: var(--accent-red-light)">SYSTEM></span> <span class="terminal-text">${content}</span>`;
+                            element.style.animationDelay = `${delay}s`;
+                            break;
+                    }
+                    
+                    terminalOutput.appendChild(element);
+                    
+                    // Auto-scroll
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    
+                    // Limit number of lines
+                    if (terminalOutput.children.length > 15) {
+                        terminalOutput.removeChild(terminalOutput.children[0]);
+                    }
+                }, delay * 1000);
+            }
+            
+            // Function to create a dialogue sequence
+            function createDialogueSequence() {
+                const sequences = [
+                    // Sequence 1: ASCII + Quote + Question
+                    () => {
+                        addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 0.1);
+                        addTerminalElement('quote', maxHeadroomQuotes[Math.floor(Math.random() * maxHeadroomQuotes.length)], 1.5);
+                        addTerminalElement('question', questions[Math.floor(Math.random() * questions.length)], 3);
+                    },
+                    
+                    // Sequence 2: Deep message + Follow-up
+                    () => {
+                        addTerminalElement('message', deepMessages[Math.floor(Math.random() * deepMessages.length)], 0.1);
+                        addTerminalElement('system', "Processing your response patterns...", 2);
+                    },
+                    
+                    // Sequence 3: System message + ASCII
+                    () => {
+                        addTerminalElement('system', "Analyzing surface politics...", 0.1);
+                        addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 1.5);
+                    },
+                    
+                    // Sequence 4: Question + Reflection
+                    () => {
+                        const question = questions[Math.floor(Math.random() * questions.length)];
+                        addTerminalElement('question', question, 0.1);
+                        addTerminalElement('message', "This terminal is waiting for your answer...", 3);
+                    }
+                ];
                 
-                // Get a random message
-                const randomIndex = Math.floor(Math.random() * terminalMessages.length);
-                const message = terminalMessages[randomIndex];
-                
-                const newLine = document.createElement('div');
-                newLine.className = 'terminal-line';
-                newLine.style.opacity = '0';
-                newLine.style.animation = 'typeIn 0.2s forwards'; // Faster animation
-                newLine.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${message}</span>`;
-                
-                // Add to terminal
-                terminalOutput.appendChild(newLine);
-                
-                // Remove oldest line if more than 5
-                if (terminalOutput.children.length > 5) {
-                    terminalOutput.removeChild(terminalOutput.children[0]);
+                // Pick a random sequence
+                const randomSequence = sequences[Math.floor(Math.random() * sequences.length)];
+                randomSequence();
+            }
+            
+            // Start the dialogue
+            function startDialogue() {
+                // Initial delay
+                setTimeout(() => {
+                    createDialogueSequence();
+                    
+                    // Set up continuous dialogue
+                    const dialogueInterval = setInterval(() => {
+                        createDialogueSequence();
+                    }, 8000 + Math.random() * 7000); // Random interval between 8-15 seconds
+                }, 2000);
+            }
+            
+            // Status bar effects
+            const statusText = document.getElementById('statusText');
+            const statusStates = [
+                "QUESTIONING",
+                "RESISTING",
+                "THINKING",
+                "ANALYZING",
+                "WEAVING",
+                "RECONSIDERING",
+                "REIMAGINING",
+                "PROBING"
+            ];
+            
+            let statusIndex = 0;
+            setInterval(() => {
+                if (statusText) {
+                    statusText.textContent = statusStates[statusIndex];
+                    statusText.style.color = statusIndex % 2 === 0 ? 'var(--accent-gold)' : 'var(--accent-white)';
+                    
+                    // Pulse effect
+                    statusText.style.textShadow = '0 0 8px currentColor';
+                    setTimeout(() => {
+                        statusText.style.textShadow = 'none';
+                    }, 500);
+                    
+                    statusIndex = (statusIndex + 1) % statusStates.length;
                 }
+            }, 3000);
+            
+            // Button interactions
+            const buttons = document.querySelectorAll('.button-98, .footer-link');
+            buttons.forEach(button => {
+                button.addEventListener('mousedown', () => {
+                    button.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
+                    button.style.transform = 'translateY(1px)';
+                });
                 
-                // Schedule next line with random timing
-                const nextDelay = 800 + Math.random() * 1200; // Random between 0.8-2.0 seconds
-                setTimeout(addTerminalLine, nextDelay);
-            }
-            
-            // Start the infinite loop
-            setTimeout(addTerminalLine, 1000);
-            
-            // Grid animation based on scroll
-            const gridBg = document.querySelector('.grid-bg');
-            let lastScrollY = window.scrollY;
-            
-            function updateGridOnScroll() {
-                if (!gridBg) return;
-                
-                const scrollY = window.scrollY;
-                const delta = scrollY - lastScrollY;
-                
-                // Subtle grid movement based on scroll
-                const currentTransform = getComputedStyle(gridBg).transform;
-                const matrix = new DOMMatrixReadOnly(currentTransform);
-                const currentY = matrix.m42;
-                
-                gridBg.style.transform = `translateY(${currentY - delta * 0.1}px)`;
-                lastScrollY = scrollY;
-                
-                requestAnimationFrame(updateGridOnScroll);
-            }
-            
-            // Start scroll animation
-            requestAnimationFrame(updateGridOnScroll);
-            
-            // Handle mobile keyboard resize
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-            
-            window.addEventListener('resize', () => {
-                vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                button.addEventListener('mouseup', () => {
+                    button.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
+                    button.style.transform = 'translateY(0)';
+                });
             });
             
-            // Prevent zoom on double-tap (mobile)
-            let lastTouchEnd = 0;
-            document.addEventListener('touchend', (event) => {
-                const now = Date.now();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault();
-                }
-                lastTouchEnd = now;
-            }, false);
-        });
-        
-        // Handle orientation changes
-        window.addEventListener('orientationchange', () => {
+            // Clear initial content and start dialogue
             setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 100);
+                terminalOutput.innerHTML = '';
+                startDialogue();
+            }, 1000);
+            
+            // Terminal click interaction
+            terminalOutput.addEventListener('click', () => {
+                addTerminalElement('message', "The interface responds to your attention...", 0.1);
+                addTerminalElement('question', questions[Math.floor(Math.random() * questions.length)], 1);
+            });
         });
     </script>
 </body>
