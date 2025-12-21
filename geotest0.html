@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>// 242</title>
+    <style>
+        /* MOBILE FIRST BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #111111;
+            --accent: #00ff9d;
+            --accent-glow: rgba(0, 255, 157, 0.1);
+            --text-primary: #e0e0e0;
+            --text-secondary: #8a8a8a;
+            --text-dim: #444444;
+            --grid-size: 20px;
+            --safe-top: env(safe-area-inset-top, 20px);
+            --safe-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+            line-height: 1.4;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding: var(--safe-top) 0 var(--safe-bottom);
+        }
+
+        /* Mobile Touch Improvements */
+        a, button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        /* Grid Background - Mobile Optimized */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--accent-glow) 1px, transparent 1px),
+                linear-gradient(90deg, var(--accent-glow) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+            animation: gridMove 120s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(calc(var(--grid-size) * -1)) translateX(calc(var(--grid-size) * -1)); }
+        }
+
+        /* Container - Mobile First */
+        .container {
+            width: 100%;
+            padding: 0 16px;
+            margin: 0 auto;
+        }
+
+        /* Minimal Header - Mobile Optimized */
+        .header {
+            padding: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 16px;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent) 20%,
+                var(--accent) 80%,
+                transparent
+            );
+            animation: pulseLine 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.6; }
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            position: relative;
+            display: inline-block;
+            padding-left: 16px;
+        }
+
+        .brand::before {
+            content: '//';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Hero Section - Mobile First */
+        .hero {
+            padding: 60px 0 40px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--text-dim);
+        }
+
+        .hero-title span {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle p {
+            margin-bottom: 20px;
+        }
+
+        /* Products Grid - Mobile First */
+        .products {
+            padding: 40px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .product-item {
+            position: relative;
+            min-height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .product-item:hover {
+            border-color: var(--accent);
+        }
+
+        .product-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
+            backdrop-filter: blur(10px);
+        }
+
+        .product-code {
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Terminal Display - Mobile Optimized */
+        .terminal {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 40px 0;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .terminal-dot:nth-child(1) { background: #ff4444; }
+        .terminal-dot:nth-child(2) { background: #ffaa00; }
+        .terminal-dot:nth-child(3) { background: #00cc44; }
+
+        .terminal-output {
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            margin-bottom: 12px;
+            opacity: 0;
+            animation: typeIn 0.4s forwards;
+            word-break: break-word;
+        }
+
+        .terminal-line:nth-child(1) { animation-delay: 0.3s; }
+        .terminal-line:nth-child(2) { animation-delay: 0.8s; }
+        .terminal-line:nth-child(3) { animation-delay: 1.3s; }
+        .terminal-line:nth-child(4) { animation-delay: 1.8s; }
+
+        @keyframes typeIn {
+            to { opacity: 0.9; }
+        }
+
+        .terminal-prompt {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .terminal-text {
+            color: var(--text-secondary);
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 40px 0 60px;
+        }
+
+        .philosophy-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .philosophy-section:nth-child(1) { animation-delay: 0.2s; }
+        .philosophy-section:nth-child(2) { animation-delay: 0.4s; }
+        .philosophy-section:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .philosophy-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .philosophy-text span {
+            color: var(--accent);
+        }
+
+        /* Footer - Mobile Optimized */
+        .footer {
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .footer-item {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-link {
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            padding: 4px 0;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* Mobile Touch Enhancements */
+        .touch-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulseHint 2s infinite;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes pulseHint {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+
+        /* Tablet (≥ 640px) */
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+                max-width: 640px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+                letter-spacing: 6px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .brand {
+                font-size: 1.4rem;
+                letter-spacing: 8px;
+            }
+        }
+
+        /* Small Desktop (≥ 768px) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+                letter-spacing: 8px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                max-width: 600px;
+            }
+            
+            .products {
+                padding: 60px 0;
+            }
+            
+            .product-item {
+                min-height: 320px;
+            }
+            
+            .philosophy {
+                padding: 60px 0 80px;
+            }
+            
+            .touch-hint {
+                display: none;
+            }
+        }
+
+        /* Desktop (≥ 1024px) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+            
+            .hero-title {
+                font-size: 3.2rem;
+                letter-spacing: 12px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 32px;
+            }
+            
+            .grid-bg {
+                --grid-size: 30px;
+            }
+            
+            .product-content {
+                padding: 24px;
+            }
+            
+            .product-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Large Desktop (≥ 1280px) */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1200px;
+            }
+            
+            .hero-title {
+                font-size: 3.6rem;
+            }
+            
+            .hero-subtitle {
+                max-width: 700px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #000000;
+                --secondary: #0a0a0a;
+                --accent-glow: rgba(0, 255, 157, 0.08);
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .grid-bg {
+                animation: none;
+            }
+        }
+
+        /* High Contrast Support */
+        @media (prefers-contrast: high) {
+            :root {
+                --accent: #00ff00;
+                --text-primary: #ffffff;
+                --text-secondary: #cccccc;
+            }
+        }
+
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="brand">GEOTRASH</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">
+                    SURFACE <span>TREATMENTS</span><br>
+                    FOR URBAN <span>CONTACT</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <p>Constructed layers for metropolitan navigation. Each piece exists as a response to environmental pressures.</p>
+                    <p>Materials selected for their interaction with light, sound, and space. Not designed to be worn, but inhabited.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="products">
+            <div class="container">
+                <div class="section-label">STRUCTURES</div>
+                <div class="product-grid">
+                    <div class="product-item" data-delay="0">
+                        <div class="product-content">
+                            <div class="product-code">GT-01 / WEAVE</div>
+                            <p class="product-desc">A dense textile with integrated conductive threads. Responds to atmospheric changes through subtle texture shifts.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item" data-delay="100">
+                        <div class="product-content">
+                            <div class="product-code">GT-02 / SHELL</div>
+                            <p class="product-desc">Layered construction with variable opacity. Surface pattern reorganizes based on ambient light frequencies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-item" data-delay="200">
+                        <div class="product-content">
+                            <div class="product-code">GT-03 / MESH</div>
+                            <p class="product-desc">Open structure designed for thermal exchange. Retains memory of urban pathways through material tension.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="terminal">
+            <div class="container">
+                <div class="terminal-header">
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                </div>
+                <div class="terminal-output">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">></span> <span class="terminal-text">material analysis: urban textile systems</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">></span> <span class="terminal-text">construction: layered response fabrics</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">></span> <span class="terminal-text">purpose: metropolitan interface layers</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">></span> <span class="terminal-text">status: integrated with environment</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy">
+            <div class="container">
+                <div class="philosophy-section">
+                    <div class="section-label">APPROACH</div>
+                    <p class="philosophy-text">
+                        We work with <span>materials that remember</span> their environment. Each textile carries traces of its context, developing patina through urban interaction.
+                    </p>
+                </div>
+                
+                <div class="philosophy-section">
+                    <div class="section-label">CONSTRUCTION</div>
+                    <p class="philosophy-text">
+                        Pieces are <span>assembled, not manufactured</span>. Seams are placed where tension naturally occurs. Fabrics are selected for their acoustic properties as much as visual.
+                    </p>
+                </div>
+                
+                <div class="philosophy-section">
+                    <div class="section-label">CONTEXT</div>
+                    <p class="philosophy-text">
+                        These are <span>tools for navigation</span> rather than decoration. They exist in dialogue with architecture, weather patterns, and the rhythm of metropolitan movement.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <a href="#" class="footer-link" onclick="return false">MATERIALS</a>
+                </div>
+                <div class="footer-item">
+                    <a href="#" class="footer-link" onclick="return false">ARCHIVE</a>
+                </div>
+                <div class="footer-item">
+                    <a href="#" class="footer-link" onclick="return false">CONTACT</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="brand">GEOTRASH</div>
+                <div class="copyright">242 — URBAN TEXTILE SYSTEMS</div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="touch-hint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+        </svg>
+    </div>
+
+    <script>
+        // Mobile-first touch interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Remove touch hint after interaction
+            const touchHint = document.querySelector('.touch-hint');
+            const removeHint = () => {
+                if (touchHint) {
+                    touchHint.style.opacity = '0';
+                    setTimeout(() => touchHint.remove(), 300);
+                }
+                document.removeEventListener('touchstart', removeHint);
+                document.removeEventListener('click', removeHint);
+            };
+            
+            document.addEventListener('touchstart', removeHint, { once: true });
+            document.addEventListener('click', removeHint, { once: true });
+            
+            // Product hover effects for mobile (touch)
+            const products = document.querySelectorAll('.product-item');
+            products.forEach(product => {
+                product.addEventListener('touchstart', () => {
+                    product.style.borderColor = 'var(--accent)';
+                });
+                
+                product.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        product.style.borderColor = '';
+                    }, 300);
+                });
+            });
+            
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe product items
+            document.querySelectorAll('.product-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+            
+            // Dynamic terminal updates
+            const terminalOutput = document.querySelector('.terminal-output');
+            const messages = [
+                "> fabric response: atmospheric",
+                "> texture memory: active",
+                "> urban integration: complete",
+                "> surface treatment: stable"
+            ];
+            
+            let messageIndex = 0;
+            
+            function updateTerminal() {
+                if (!terminalOutput) return;
+                
+                const newLine = document.createElement('div');
+                newLine.className = 'terminal-line';
+                newLine.style.animation = 'typeIn 0.4s forwards';
+                newLine.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${messages[messageIndex]}</span>`;
+                
+                terminalOutput.appendChild(newLine);
+                messageIndex = (messageIndex + 1) % messages.length;
+                
+                // Keep only last 4 lines
+                if (terminalOutput.children.length > 4) {
+                    terminalOutput.removeChild(terminalOutput.children[0]);
+                }
+            }
+            
+            // Update terminal every 8 seconds
+            setInterval(updateTerminal, 8000);
+            
+            // Grid animation based on scroll
+            const gridBg = document.querySelector('.grid-bg');
+            let lastScrollY = window.scrollY;
+            
+            function updateGridOnScroll() {
+                if (!gridBg) return;
+                
+                const scrollY = window.scrollY;
+                const delta = scrollY - lastScrollY;
+                
+                // Subtle grid movement based on scroll
+                const currentTransform = getComputedStyle(gridBg).transform;
+                const matrix = new DOMMatrixReadOnly(currentTransform);
+                const currentY = matrix.m42;
+                
+                gridBg.style.transform = `translateY(${currentY - delta * 0.1}px)`;
+                lastScrollY = scrollY;
+                
+                requestAnimationFrame(updateGridOnScroll);
+            }
+            
+            // Start scroll animation
+            requestAnimationFrame(updateGridOnScroll);
+            
+            // Handle mobile keyboard resize
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            
+            window.addEventListener('resize', () => {
+                vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            });
+            
+            // Prevent zoom on double-tap (mobile)
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', (event) => {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        });
+        
+        // Handle orientation changes
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
