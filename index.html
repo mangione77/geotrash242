@@ -105,7 +105,7 @@
             color: var(--text-dim);
             position: relative;
             display: inline-block;
-            padding-left: 16px;
+            padding-left: 28px; /* Increased from 16px for more separation */
         }
 
         .brand::before {
@@ -115,9 +115,10 @@
             color: var(--accent);
             font-size: 0.9rem;
             opacity: 0.8;
+            letter-spacing: 1px;
         }
 
-        /* Hero Section - Mobile First */
+        /* Hero Section - Mobile First - FIXED TITLE */
         .hero {
             padding: 60px 0 40px;
             position: relative;
@@ -126,15 +127,18 @@
         .hero-title {
             font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 4px;
             line-height: 1.3;
             margin-bottom: 24px;
             color: var(--text-dim);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px; /* Space between elements */
+            align-items: center;
         }
 
         .hero-title span {
             color: var(--accent);
-            position: relative;
+            margin: 0 4px; /* Added spacing around slashes */
         }
 
         .hero-subtitle {
@@ -199,7 +203,7 @@
             line-height: 1.5;
         }
 
-        /* Terminal Display - Mobile Optimized */
+        /* Terminal Display - Mobile Optimized - FASTER ANIMATION */
         .terminal {
             padding: 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -232,16 +236,11 @@
         }
 
         .terminal-line {
-            margin-bottom: 12px;
+            margin-bottom: 8px; /* Reduced from 12px */
             opacity: 0;
-            animation: typeIn 0.4s forwards;
+            animation: typeIn 0.2s forwards; /* Changed from 0.4s to 0.2s */
             word-break: break-word;
         }
-
-        .terminal-line:nth-child(1) { animation-delay: 0.3s; }
-        .terminal-line:nth-child(2) { animation-delay: 0.8s; }
-        .terminal-line:nth-child(3) { animation-delay: 1.3s; }
-        .terminal-line:nth-child(4) { animation-delay: 1.8s; }
 
         @keyframes typeIn {
             to { opacity: 0.9; }
@@ -396,7 +395,7 @@
             
             .hero-title {
                 font-size: 2.2rem;
-                letter-spacing: 6px;
+                gap: 16px; /* Increased gap for larger screens */
             }
             
             .product-grid {
@@ -411,6 +410,7 @@
             .brand {
                 font-size: 1.4rem;
                 letter-spacing: 8px;
+                padding-left: 32px; /* Adjusted for larger screen */
             }
         }
 
@@ -426,7 +426,7 @@
             
             .hero-title {
                 font-size: 2.8rem;
-                letter-spacing: 8px;
+                gap: 20px; /* More space on desktop */
             }
             
             .hero-subtitle {
@@ -459,7 +459,7 @@
             
             .hero-title {
                 font-size: 3.2rem;
-                letter-spacing: 12px;
+                gap: 24px;
             }
             
             .product-grid {
@@ -548,8 +548,10 @@
         <section class="hero">
             <div class="container">
                 <h1 class="hero-title">
-                    SURFACE <span>TREATMENTS</span><br>
-                    FOR URBAN <span>CONTACT</span>
+                    <span>//</span> SURFACE <span>//</span><br>
+                    TREATMENTS <span>//</span><br>
+                    FOR URBAN <span>//</span><br>
+                    CONTACT <span>//</span>
                 </h1>
                 <div class="hero-subtitle">
                     <p>Constructed layers for metropolitan navigation. Each piece exists as a response to environmental pressures.</p>
@@ -602,9 +604,6 @@
                     </div>
                     <div class="terminal-line">
                         <span class="terminal-prompt">></span> <span class="terminal-text">purpose: metropolitan interface layers</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">></span> <span class="terminal-text">status: integrated with environment</span>
                     </div>
                 </div>
             </div>
@@ -721,36 +720,49 @@
                 observer.observe(item);
             });
             
-            // Dynamic terminal updates
+            // UPDATED: Terminal animation - faster, random, infinite
             const terminalOutput = document.querySelector('.terminal-output');
-            const messages = [
+            const terminalMessages = [
+                "> material analysis: urban textile systems",
+                "> construction: layered response fabrics",
+                "> purpose: metropolitan interface layers",
+                "> status: integrated with environment",
                 "> fabric response: atmospheric",
                 "> texture memory: active",
                 "> urban integration: complete",
-                "> surface treatment: stable"
+                "> surface treatment: stable",
+                "> system: geotrash_242",
+                "> frequency: synchronized"
             ];
             
-            let messageIndex = 0;
-            
-            function updateTerminal() {
+            function addTerminalLine() {
                 if (!terminalOutput) return;
+                
+                // Get a random message
+                const randomIndex = Math.floor(Math.random() * terminalMessages.length);
+                const message = terminalMessages[randomIndex];
                 
                 const newLine = document.createElement('div');
                 newLine.className = 'terminal-line';
-                newLine.style.animation = 'typeIn 0.4s forwards';
-                newLine.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${messages[messageIndex]}</span>`;
+                newLine.style.opacity = '0';
+                newLine.style.animation = 'typeIn 0.2s forwards'; // Faster animation
+                newLine.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${message}</span>`;
                 
+                // Add to terminal
                 terminalOutput.appendChild(newLine);
-                messageIndex = (messageIndex + 1) % messages.length;
                 
-                // Keep only last 4 lines
-                if (terminalOutput.children.length > 4) {
+                // Remove oldest line if more than 5
+                if (terminalOutput.children.length > 5) {
                     terminalOutput.removeChild(terminalOutput.children[0]);
                 }
+                
+                // Schedule next line with random timing
+                const nextDelay = 800 + Math.random() * 1200; // Random between 0.8-2.0 seconds
+                setTimeout(addTerminalLine, nextDelay);
             }
             
-            // Update terminal every 8 seconds
-            setInterval(updateTerminal, 8000);
+            // Start the infinite loop
+            setTimeout(addTerminalLine, 1000);
             
             // Grid animation based on scroll
             const gridBg = document.querySelector('.grid-bg');
