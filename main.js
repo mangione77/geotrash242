@@ -1,3 +1,38 @@
+// Navbar dot in
+const navDots = document.querySelectorAll('.nav-dot');
+navDots.forEach((dot, index) => {
+    dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+                    
+                            if (index === 0) {
+                                        // Red dot - minimize effect
+                                                    document.body.style.opacity = '0.7';
+                                                                setTimeout(() => {
+                                                                                document.body.style.opacity = '1';
+                                                                                            }, 300);
+                                                                                                    } else if (index === 1) {
+                                                                                                                // Yellow dot - refresh terminal
+                                                                                                                            const terminal = document.getElementById('terminalOutput');
+                                                                                                                                        if (terminal) {
+                                                                                                                                                        terminal.innerHTML = '';
+                                                                                                                                                                        addTerminalElement('system', 'Terminal refreshed...', 0);
+                                                                                                                                                                                    }
+                                                                                                                                                                                            } else if (index === 2) {
+                                                                                                                                                                                                        // Green dot - color shift
+                                                                                                                                                                                                                    const root = document.documentElement;
+                                                                                                                                                                                                                                const currentHue = Math.floor(Math.random() * 60) + 100;
+                                                                                                                                                                                                                                            root.style.setProperty('--accent-green', `hsl(${currentHue}, 100%, 50%)`);
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                dot.addEventListener('mousedown', () => {
+                                                                                                                                                                                                                                                                        dot.style.transform = 'scale(0.9)';
+                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                    dot.addEventListener('mouseup', () => {
+                                                                                                                                                                                                                                                                                            dot.style.transform = 'scale(1)';
+                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                });
 document.addEventListener('DOMContentLoaded', () => {
         const terminalOutput = document.getElementById('terminalOutput');
             const statusText = document.getElementById('statusText');
