@@ -98,20 +98,22 @@
                 <div class="terminal">
                     <div class="terminal-top-bar">
                         <div class="terminal-controls">
-                            <button class="term-btn">▲</button>
-                            <button class="term-btn">▼</button>
-                            <button class="term-btn">◀</button>
-                            <button class="term-btn">▶</button>
+                            <span class="term-control">~</span>
+                            <span class="term-control">/</span>
+                            <span class="term-control">ls</span>
+                            <span class="term-control">cd</span>
                         </div>
                         <div class="terminal-tabs">
-                            <span class="term-tab active">LOG</span>
-                            <span class="term-tab">DATA</span>
-                            <span class="term-tab">SYS</span>
+                            <span class="term-tab active">bash</span>
+                            <span class="term-tab">sys</span>
+                            <span class="term-tab">log</span>
                         </div>
                     </div>
-                    <div class="terminal-output" id="terminalOutput">
-                        <div class="terminal-line">
-                            <span class="terminal-prompt">></span> <span class="terminal-text">Initializing thought protocol...</span>
+                    <div class="terminal-output-container">
+                        <div class="terminal-output" id="terminalOutput">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">></span> <span class="terminal-text">Initializing thought protocol...</span>
+                            </div>
                         </div>
                     </div>
                 </div>
