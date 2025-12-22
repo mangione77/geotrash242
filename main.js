@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+console.log('GEOTRASH 242 - SYSTEM ONLINE');
+    
+    // Random cyberpunk/abstract image URLs
+    const randomImages = [
+        'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=300&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop&auto=format'
+    ];
+
+    // Insert random images into cards
+    function insertRandomImages() {
+        for (let i = 1; i <= 3; i++) {
+            const container = document.getElementById(`card-image-${i}`);
+            if (container) {
+                const img = document.createElement('img');
+                const randomIndex = Math.floor(Math.random() * randomImages.length);
+                img.src = randomImages[randomIndex];
+                img.alt = `Product ${i}`;
+                container.appendChild(img);
+            }
+        }
+    }
+
     const terminalOutput = document.getElementById('terminalOutput');
     const statusText = document.getElementById('statusText');
     const footerStatus = document.getElementById('footerStatus');
