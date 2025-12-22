@@ -95,15 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
                 case 'quote':
                     element.className = 'quote';
-                    element.innerHTML = `"${content}" <span style="color: var(--accent-green); font-size: 0.7rem;">— Max Headroom</span>`;
+                    element.innerHTML = `~ "${content}" <span style="color: var(--accent-green); font-size: 0.7rem;">— Max Headroom</span>`;
                     break;
                 case 'thought':
                     element.className = 'thought';
-                    element.innerHTML = `⟢ ${content}`;
+                    element.innerHTML = `$ 🌐🗑 ~ ${content}`;
                     break;
                 case 'system':
                     element.className = 'terminal-line';
-                    element.innerHTML = `<span class="terminal-prompt">SYSTEM></span> <span class="terminal-text">${content}</span>`;
+                    element.innerHTML = `<span class="terminal-prompt">$ GEO242~ ></span> <span class="terminal-text">${content}</span>`;
                     break;
                 case 'prompt':
                     element.className = 'terminal-line';
@@ -131,22 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let sequenceStep = 0;
     const sequences = [
         () => {
-            addTerminalElement('prompt', "Surface analysis initiated...", 0);
+            addTerminalElement('prompt', "$ 🌐🗑~ Surface analysis initiated...", 0);
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 1.2);
             addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 2.8);
         },
         () => {
-            addTerminalElement('prompt', "Processing media signals...", 0);
+            addTerminalElement('prompt', "$ 🌐🗑~ Processing media signals...", 0);
             addTerminalElement('quote', headroomQuotes[Math.floor(Math.random() * headroomQuotes.length)], 1.2);
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 3.2);
         },
         () => {
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 0);
-            addTerminalElement('system', "Textile memory active...", 1.8);
+            addTerminalElement('system', "$ 🌐🗑~ Textile memory active...", 1.8);
             addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 3.4);
         },
         () => {
-            addTerminalElement('prompt', "Questioning patterns...or questioning you?", 0);
+            addTerminalElement('prompt', "$ 🌐🗑~ Questioning patterns...or questioning you?", 0);
             addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 1.4);
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 3.1);
         }
