@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `  (\\__/) 
   (•ᴥ• ) 
   /  🧵 \\ 
- WEdidntASKforTHIS`,
+ TEXTILE DOG`,
         `   ╱▔▔▔▔▔▔╲
   ▕   ⚡   ▏
   ▕  / \\  ▏
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `  .--.      .--.
  (    )----(    )
   '-'      '-' 
-    nO bRaIn nO pAIN 💀`,
+    ROBOT CAT`,
         `   ╭───────╮
    │  📡  │
    │ ┌───┐│
@@ -74,11 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
         "We don't make clothes. We make questions you can wear."
     ];
     
-   
+    // Generate random IDs for cards
     function generateRandomId() {
         return Math.floor(Math.random() * 900 + 100).toString().padStart(3, '0');
     }
     
+    // Update card IDs on page load
     document.querySelectorAll('.random-id').forEach(el => {
         el.textContent = generateRandomId();
     });
@@ -168,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    const statusStates = ["FORMING", "ACTIVE", "BALLIN"];
-    const footerStates = ["ACTIVE", "FORMING", BALLIN"];"];
+    const statusStates = ["FORMING", "ACTIVE", "ALIVE"];
+    const footerStates = ["ACTIVE", "FORMING", "ALIVE"];
     
     let statusIndex = 0;
     let footerIndex = 1;
@@ -243,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-   
+    // Card hover effects
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -263,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    
+    // Navbar dot interactions
     const navDots = document.querySelectorAll('.nav-dot');
     navDots.forEach((dot, index) => {
         dot.addEventListener('click', (e) => {
