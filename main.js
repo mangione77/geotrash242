@@ -1,51 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
     const terminalOutput = document.getElementById('terminalOutput');
     const statusText = document.getElementById('statusText');
+    const footerStatus = document.getElementById('footerStatus');
     
     const asciiArt = [
-        `  /\\_/\\
- ( o.o )
-  > ^ <`,
-        `   /\\_/\\
-  ( -.- )
-  /   \\
- /     \\`,
-        `    /\\_/\\
-   ( •.• )
-  /  >  \\
- /       \\`,
-        `  /\\_/\\
- ( =.= )
-  /   \\
- (_____)`,
-        `    /\\_/\\
-   ( @.@ )
-  /  \"  \\
- /       \\`
+        `  ╭━━━━━━━━━━━━━━╮
+  ┃   (⌐■_■)   ┃
+  ┃  /     \\   ┃
+  ┃  \\_____/   ┃
+  ╰━━━━━━━━━━━━━━╯`,
+        `  ╔══════════════╗
+  ║   ┌─┐        ║
+  ║   │●│  BZZT  ║
+  ║   └─┘        ║
+  ╚══════════════╝`,
+        `  [▰▰▰▰▰▰▰▰▰▰]
+   LOADING...
+  [■■■■■■■■■■]`,
+        `  (\\__/) 
+  (•ᴥ• ) 
+  /  🧵 \\ 
+ TEXTILE DOG`,
+        `   ╱▔▔▔▔▔▔╲
+  ▕   ⚡   ▏
+  ▕  / \\  ▏
+  ╲▂▂▂▂▂▂╱`,
+        `  ┌─────────┐
+  │   🔥   │
+  │  /|\\|  │
+  │   / \\  │
+  └─────────┘`,
+        `  ╭─○───────╮
+  │  /\\_/\\  │
+  │ ( ◕ ◕ ) │
+  │  >   <  │
+  ╰─────────╯`,
+        `  .--.      .--.
+ (    )----(    )
+  '-'      '-' 
+    ROBOT CAT`,
+        `   ╭───────╮
+   │  📡  │
+   │ ┌───┐│
+   ╰─┴───┴╯`,
+        `  ╭─────────╮
+  │  ⚙️ ⚙️  │
+  │   ░░░   │
+  │  ⚙️ ⚙️  │
+  ╰─────────╯`
     ];
     
     const headroomQuotes = [
-        "Reality is just a collective hunch.",
-        "The future isn't what it used to be.",
-        "C-c-catch you later!",
-        "Anybody who isn't confused here isn't thinking clearly.",
-        "Television is the literature of the illiterate.",
-        "I never make mistakes. I make predictions which immediately turn out to be wrong.",
-        "In the future, everyone will be anonymous for fifteen minutes.",
-        "My ratings are so low, I need a submarine to find them."
+        "C-c-catch the wave of the future!",
+        "I'm thinking... but nothing's happening!",
+        "My brain is like a sponge... a dry sponge.",
+        "Television: the box they buried civilization in.",
+        "I'd explain it to you, but your brain would explode.",
+        "In the future, mistakes will be called 'features'.",
+        "Reality is overrated anyway.",
+        "I'm not confused, I'm just multi-directional."
     ];
     
     const deepThoughts = [
-        "What we wear is the first layer of armor against a world that wants us uniform.",
-        "Every thread holds memory. Every fabric tells a story of resistance.",
-        "The most radical act is to remain visible when they want you to disappear.",
-        "Your silhouette against the skyline is a declaration of autonomy.",
-        "Textiles that remember are textiles that resist.",
-        "The uniform asks for compliance. Critical fashion demands questions.",
-        "We don't dress bodies. We armor minds.",
-        "A seam is a boundary. A stitch is a decision.",
-        "What patterns have you accepted without examination?",
-        "The surface speaks. Are you listening?"
+        "What patterns have you woven without questioning?",
+        "Every seam tells a story of resistance or compliance.",
+        "The uniform whispers 'blend in'. Listen for the shout.",
+        "Your silhouette is your first statement to the world.",
+        "Threads hold memories. What are yours remembering?",
+        "Fabric that forgets is fabric that conforms.",
+        "The most radical textile is one that teaches.",
+        "A button undone is a question asked.",
+        "What armor do you need for today's consensus?",
+        "We don't make clothes. We make questions you can wear."
     ];
     
     function addTerminalElement(type, content, delay = 0) {
@@ -77,10 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
             
             element.style.animationDelay = `${delay}s`;
             terminalOutput.appendChild(element);
-            terminalOutput.scrollTop = terminalOutput.scrollHeight;
             
-            if (terminalOutput.children.length > 12) {
+            while (terminalOutput.children.length > 8) {
                 terminalOutput.removeChild(terminalOutput.children[0]);
+            }
+            
+            const scrollHeight = terminalOutput.scrollHeight;
+            const currentScroll = terminalOutput.scrollTop;
+            const targetScroll = scrollHeight - terminalOutput.clientHeight;
+            
+            if (targetScroll > currentScroll) {
+                terminalOutput.scrollTop = targetScroll;
             }
         }, delay * 1000);
     }
@@ -89,23 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const sequences = [
         () => {
             addTerminalElement('prompt', "Surface analysis initiated...", 0);
-            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 1.2);
-            addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 2.5);
+            addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 1.2);
+            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 2.8);
         },
         () => {
             addTerminalElement('prompt', "Processing media signals...", 0);
             addTerminalElement('quote', headroomQuotes[Math.floor(Math.random() * headroomQuotes.length)], 1.2);
-            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 3);
+            addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 3.2);
         },
         () => {
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 0);
-            addTerminalElement('system', "Textile memory active...", 1.5);
-            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 2.8);
+            addTerminalElement('system', "Textile memory active...", 1.8);
+            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 3.4);
         },
         () => {
             addTerminalElement('prompt', "Questioning patterns...", 0);
-            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 1.2);
-            addTerminalElement('quote', headroomQuotes[Math.floor(Math.random() * headroomQuotes.length)], 3);
+            addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 1.4);
+            addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 3.1);
         }
     ];
     
@@ -119,36 +152,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 setTimeout(() => {
                     initialSequence();
-                }, 7000);
+                }, 8000);
             };
             
             initialSequence();
         }, 1000);
     }
     
-    const statusStates = [
-        "QUESTIONING",
-        "RESISTING",
-        "THINKING",
-        "WEAVING",
-        "RECONSIDERING",
-        "REIMAGINING"
-    ];
+    const statusStates = ["FORMING", "ACTIVE", "ALIVE"];
+    const footerStates = ["ACTIVE", "FORMING", "ALIVE"];
     
     let statusIndex = 0;
+    let footerIndex = 1;
+    
     setInterval(() => {
         if (statusText) {
             statusText.textContent = statusStates[statusIndex];
-            statusText.style.color = statusIndex % 2 === 0 ? 'var(--accent-gold)' : 'var(--accent-white)';
-            statusText.style.textShadow = '0 0 8px currentColor';
-            setTimeout(() => {
-                statusText.style.textShadow = 'none';
-            }, 500);
+            statusText.style.color = statusIndex === 0 ? 'var(--accent-gold)' : 
+                                   statusIndex === 1 ? 'var(--accent-white)' : 
+                                   'var(--terminal-text)';
             statusIndex = (statusIndex + 1) % statusStates.length;
         }
-    }, 3500);
+    }, 4000);
     
-    const buttons = document.querySelectorAll('.button-98, .footer-link');
+    setInterval(() => {
+        if (footerStatus) {
+            footerStatus.textContent = footerStates[footerIndex];
+            footerStatus.style.color = footerIndex === 0 ? 'var(--accent-gold)' : 
+                                     footerIndex === 1 ? 'var(--accent-white)' : 
+                                     'var(--terminal-text)';
+            footerIndex = (footerIndex + 1) % footerStates.length;
+        }
+    }, 5000);
+    
+    const buttons = document.querySelectorAll('.button-98');
     buttons.forEach(button => {
         button.addEventListener('mousedown', () => {
             button.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
@@ -158,19 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('mouseup', () => {
             button.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
             button.style.transform = 'translateY(0)';
-        });
-    });
-    
-    const productItems = document.querySelectorAll('.product-item');
-    productItems.forEach(item => {
-        item.addEventListener('mousedown', () => {
-            item.style.borderColor = 'var(--border-dark) var(--accent-gold) var(--accent-gold) var(--border-dark)';
-            item.style.transform = 'translateY(2px)';
-        });
-        
-        item.addEventListener('mouseup', () => {
-            item.style.borderColor = 'var(--accent-gold) var(--border-dark) var(--border-dark) var(--accent-gold)';
-            item.style.transform = 'translateY(-2px)';
         });
     });
     
@@ -203,9 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    terminalOutput.addEventListener('click', () => {
-        addTerminalElement('system', "Interface engaged...", 0);
-        addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 0.8);
+    const termBtns = document.querySelectorAll('.term-btn');
+    termBtns.forEach(btn => {
+        btn.addEventListener('mousedown', () => {
+            btn.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
+        });
+        
+        btn.addEventListener('mouseup', () => {
+            btn.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
+        });
     });
     
     startDialogue();
