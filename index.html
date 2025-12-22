@@ -96,11 +96,18 @@
             </div>
             <div class="window-body">
                 <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-dot"></div>
-                        <div class="terminal-dot"></div>
-                        <div class="terminal-dot"></div>
-                        <span class="terminal-label">critical_interface.exe</span>
+                    <div class="terminal-top-bar">
+                        <div class="terminal-controls">
+                            <button class="term-btn">▲</button>
+                            <button class="term-btn">▼</button>
+                            <button class="term-btn">◀</button>
+                            <button class="term-btn">▶</button>
+                        </div>
+                        <div class="terminal-tabs">
+                            <span class="term-tab active">LOG</span>
+                            <span class="term-tab">DATA</span>
+                            <span class="term-tab">SYS</span>
+                        </div>
                     </div>
                     <div class="terminal-output" id="terminalOutput">
                         <div class="terminal-line">
@@ -163,7 +170,7 @@
                     
                     <div class="footer-bottom">
                         <div class="brand footer-brand">GEOTRASH <span class="number">242</span></div>
-                        <div class="copyright">AUTONOMOUS TEXTILE SYSTEMS</div>
+                        <div class="copyright">AUTONOMOUS TEXTILE SYSTEMS • STATUS: <span id="footerStatus">ACTIVE</span></div>
                     </div>
                 </div>
             </div>
@@ -172,8 +179,8 @@
 
     <div class="status-bar">
         <div class="status-left">▶ CRITICAL SYSTEMS</div>
-        <div class="status-center" id="statusText">QUESTIONING</div>
-        <div class="status-right">◼ ACTIVE</div>
+        <div class="status-center" id="statusText">FORMING</div>
+        <div class="status-right">◼ ALIVE</div>
     </div>
 
     <script src="main.js"></script>
