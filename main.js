@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ╰━━━━━━━━━━━━━━╯`,
         `  ╔══════════════╗
   ║   ┌─┐        ║
-  ║   │●│  BZZT  ║
+  ║   │●│  BZZT(SCAM)  ║
   ║   └─┘        ║
   ╚══════════════╝`,
         `  [▰▰▰▰▰▰▰▰▰▰]
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `  (\\__/) 
   (•ᴥ• ) 
   /  🧵 \\ 
- TEXTILE DOG`,
+ weNEVERaskedFORthis`,
         `   ╱▔▔▔▔▔▔╲
   ▕   ⚡   ▏
   ▕  / \\  ▏
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `  .--.      .--.
  (    )----(    )
   '-'      '-' 
-    ROBOT CAT`,
+    weSTILLdontbelieveyou`,
         `   ╭───────╮
    │  📡  │
    │ ┌───┐│
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 3.4);
         },
         () => {
-            addTerminalElement('prompt', "Questioning patterns...", 0);
+            addTerminalElement('prompt', "Questioning patterns...or questioning you?", 0);
             addTerminalElement('thought', deepThoughts[Math.floor(Math.random() * deepThoughts.length)], 1.4);
             addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 3.1);
         }
@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    const statusStates = ["FORMING", "ACTIVE", "ALIVE"];
-    const footerStates = ["ACTIVE", "FORMING", "ALIVE"];
+    const statusStates = ["FORMING", "ACTIVE", "BALLIN"];
+    const footerStates = ["ACTIVE", "FORMING", "BALLIN"];
     
     let statusIndex = 0;
     let footerIndex = 1;
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const randomMessage = productMessages[cardId][Math.floor(Math.random() * productMessages[cardId].length)];
             const cardNumber = card.querySelector('.random-id').textContent;
             
-            addTerminalElement('system', `Examining ${cardTitle.toUpperCase()} (#${cardNumber})...`, 0);
+            addTerminalElement('system', `$ 🌐🗑~ Examining ${cardTitle.toUpperCase()} (#${cardNumber})...`, 0);
             addTerminalElement('thought', randomMessage, 0.8);
             
             // Visual feedback on card
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const terminal = document.getElementById('terminalOutput');
                 if (terminal) {
                     terminal.innerHTML = '';
-                    addTerminalElement('system', 'Terminal refreshed...', 0);
+                    addTerminalElement('system', '$ 🌐🗑~ Terminal refreshed...', 0);
                 }
             } else if (index === 2) {
                 const root = document.documentElement;
