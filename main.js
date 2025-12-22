@@ -196,6 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
             button.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
             button.style.transform = 'translateY(0)';
         });
+        
+        button.addEventListener('touchstart', () => {
+            button.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
+            button.style.transform = 'translateY(1px)';
+        });
+        
+        button.addEventListener('touchend', () => {
+            setTimeout(() => {
+                button.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
+                button.style.transform = 'translateY(0)';
+            }, 150);
+        });
     });
     
     const examineButtons = document.querySelectorAll('.examine-btn');
@@ -227,16 +239,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    const termBtns = document.querySelectorAll('.term-btn');
-    termBtns.forEach(btn => {
-        btn.addEventListener('mousedown', () => {
-            btn.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
+    const termControls = document.querySelectorAll('.term-control, .term-tab');
+    termControls.forEach(control => {
+        control.addEventListener('mousedown', () => {
+            control.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
         });
         
-        btn.addEventListener('mouseup', () => {
-            btn.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
+        control.addEventListener('mouseup', () => {
+            control.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
         });
     });
+    
+    terminalOutput.style.pointerEvents = 'none';
+    terminalOutput.style.userSelect = 'none';
     
     startDialogue();
     
@@ -245,4 +260,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
         }, 100);
     });
+    
+    const terminalContainer = document.querySelector('.terminal-output-container');
+    if (terminalContainer) {
+        terminalContainer.style.pointerEvents = 'none';
+    }
 });
