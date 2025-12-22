@@ -3,500 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>// 242</title>
+    <title>GEOTRASH 242 // Critical Fashion Systems</title>
     <link rel="stylesheet" href="https://unpkg.com/98.css">
-    <style>
-        /* MOBILE FIRST BASE - SUBTLE ANTIFASCIST PALETTE */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #111111;
-            --secondary: #1a1a1a;
-            --accent-red: #8b0000;
-            --accent-red-light: #a52a2a;
-            --accent-black: #000000;
-            --accent-white: #d3d3d3;
-            --accent-gold: #b8860b;
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --window-bg: #222222;
-            --border-light: #444444;
-            --border-dark: #000000;
-            --terminal-text: #90ee90;
-            --terminal-accent: #ffd700;
-        }
-
-        body {
-            background-color: var(--primary);
-            color: var(--text-primary);
-            font-family: 'MS Sans Serif', 'Segoe UI', sans-serif;
-            line-height: 1.4;
-            overflow-x: hidden;
-            min-height: 100vh;
-            padding: 8px;
-            background-image: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(139, 0, 0, 0.03) 1px,
-                    rgba(139, 0, 0, 0.03) 2px
-                );
-        }
-
-        /* Windows 98 Window Styling - Subtle Theme */
-        .window {
-            margin-bottom: 16px;
-            max-width: 100%;
-            box-shadow: 0 0 15px rgba(139, 0, 0, 0.1);
-            border: 1px solid rgba(139, 0, 0, 0.2);
-        }
-
-        .window-title {
-            background: linear-gradient(90deg, var(--accent-red), var(--accent-red-light));
-            color: var(--accent-white);
-            padding: 6px 12px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
-            border-bottom: 2px solid var(--accent-black);
-        }
-
-        .window-body {
-            background-color: var(--window-bg);
-            padding: 16px;
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-        }
-
-        /* Container - Mobile First */
-        .container {
-            width: 100%;
-            padding: 0 8px;
-            margin: 0 auto;
-        }
-
-        /* Header */
-        .header {
-            padding: 16px 0;
-            position: relative;
-        }
-
-        .brand {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--accent-white);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .brand .number {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 40px 0 24px;
-            position: relative;
-        }
-
-        .hero-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            line-height: 1.3;
-            margin-bottom: 16px;
-            color: var(--accent-white);
-            text-align: center;
-            border-bottom: 1px solid rgba(139, 0, 0, 0.3);
-            padding-bottom: 16px;
-        }
-
-        .hero-title-line {
-            display: block;
-            margin-bottom: 8px;
-            padding: 4px 0;
-        }
-
-        .hero-title .slash {
-            color: var(--accent-red-light);
-            margin: 0 8px;
-            font-weight: normal;
-            opacity: 0.7;
-        }
-
-        .hero-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .hero-subtitle p {
-            margin-bottom: 16px;
-            padding: 12px;
-            background: rgba(34, 34, 34, 0.9);
-            border: 1px solid var(--accent-red);
-            border-left: 4px solid var(--accent-red-light);
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Products Grid */
-        .products {
-            padding: 24px 0;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            margin-top: 16px;
-        }
-
-        .product-item {
-            background: rgba(34, 34, 34, 0.9);
-            border: 2px solid;
-            border-color: var(--accent-red) var(--border-dark) var(--border-dark) var(--accent-red);
-            padding: 12px;
-            position: relative;
-            transition: all 0.3s;
-            box-shadow: 0 0 10px rgba(139, 0, 0, 0.1);
-        }
-
-        .product-item:hover {
-            border-color: var(--accent-gold) var(--border-dark) var(--border-dark) var(--accent-gold);
-            box-shadow: 0 0 15px rgba(184, 134, 11, 0.2);
-        }
-
-        .product-content {
-            padding: 8px;
-        }
-
-        .product-code {
-            font-family: 'Courier New', monospace;
-            color: var(--accent-gold);
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            background: rgba(139, 0, 0, 0.1);
-            padding: 6px 10px;
-            display: inline-block;
-            border: 1px solid var(--accent-red-light);
-            border-radius: 2px;
-        }
-
-        .product-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Enhanced Terminal Display */
-        .terminal {
-            padding: 24px 0;
-            margin: 24px 0;
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 16px;
-            padding: 8px 12px;
-            background: linear-gradient(90deg, var(--accent-red), #5a0000);
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-        }
-
-        .terminal-dot {
-            width: 14px;
-            height: 14px;
-            border: 2px solid;
-            border-color: rgba(255,255,255,0.3) rgba(0,0,0,0.5) rgba(0,0,0,0.5) rgba(255,255,255,0.3);
-            background: #333;
-            border-radius: 50%;
-        }
-
-        .terminal-dot:nth-child(1) { background: var(--accent-red); }
-        .terminal-dot:nth-child(2) { background: var(--accent-gold); }
-        .terminal-dot:nth-child(3) { background: var(--accent-white); }
-
-        .terminal-output {
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            line-height: 1.3;
-            background: #000;
-            color: var(--terminal-text);
-            padding: 16px;
-            border: 3px solid var(--accent-red);
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            min-height: 180px;
-            max-height: 250px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            box-shadow: inset 0 0 20px rgba(139, 0, 0, 0.1);
-        }
-
-        .terminal-line {
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: typeIn 0.15s forwards;
-            word-break: break-word;
-        }
-
-        .ascii-art {
-            color: var(--terminal-accent);
-            font-family: monospace;
-            white-space: pre;
-            font-size: 0.7rem;
-            line-height: 1;
-            margin: 10px 0;
-            opacity: 0;
-            animation: typeIn 0.3s forwards;
-        }
-
-        @keyframes typeIn {
-            to { opacity: 1; }
-        }
-
-        .terminal-prompt {
-            color: var(--terminal-accent);
-            margin-right: 8px;
-            font-weight: bold;
-        }
-
-        .terminal-text {
-            color: var(--terminal-text);
-        }
-
-        .quote {
-            color: var(--accent-gold);
-            font-style: italic;
-            border-left: 2px solid var(--accent-red-light);
-            padding-left: 10px;
-            margin: 10px 0;
-            opacity: 0;
-            animation: typeIn 0.2s forwards;
-        }
-
-        .question {
-            color: var(--accent-white);
-            background: rgba(139, 0, 0, 0.1);
-            padding: 8px;
-            border: 1px dashed var(--accent-red-light);
-            margin: 8px 0;
-            opacity: 0;
-            animation: typeIn 0.25s forwards;
-        }
-
-        /* Philosophy Section */
-        .philosophy {
-            padding: 24px 0 40px;
-        }
-
-        .philosophy-section {
-            margin-bottom: 24px;
-            padding: 16px;
-            background: rgba(34, 34, 34, 0.9);
-            border: 2px solid;
-            border-color: var(--accent-red) var(--border-dark) var(--border-dark) var(--accent-red);
-            box-shadow: 0 0 10px rgba(139, 0, 0, 0.1);
-        }
-
-        .section-label {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-            padding-bottom: 6px;
-            border-bottom: 2px solid var(--accent-red);
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .philosophy-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .philosophy-text span {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 24px 0 16px;
-            border-top: 2px solid var(--accent-red);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .footer-item {
-            text-align: center;
-        }
-
-        .footer-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(180deg, var(--accent-red-light), var(--accent-red));
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            color: var(--accent-white);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-
-        .footer-link:hover {
-            background: linear-gradient(180deg, var(--accent-red), #5a0000);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 16px;
-            border-top: 1px solid rgba(139, 0, 0, 0.3);
-        }
-
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-        }
-
-        /* Button Styles */
-        .button-98 {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 4px;
-            background: linear-gradient(180deg, var(--accent-red-light), var(--accent-red));
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            font-family: 'MS Sans Serif', sans-serif;
-            font-size: 0.9rem;
-            cursor: pointer;
-            color: var(--accent-white);
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-
-        .button-98:hover {
-            background: linear-gradient(180deg, var(--accent-red), #5a0000);
-        }
-
-        /* Status Bar */
-        .status-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, var(--accent-red), #5a0000);
-            border-top: 2px solid var(--accent-gold);
-            padding: 6px 12px;
-            font-size: 0.75rem;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1000;
-            color: var(--accent-white);
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.7);
-        }
-
-        /* RESPONSIVE BREAKPOINTS */
-        @media (min-width: 640px) {
-            .container {
-                padding: 0 16px;
-                max-width: 640px;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .brand {
-                font-size: 1.8rem;
-            }
-            
-            .terminal-output {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-            
-            .hero {
-                padding: 60px 0 40px;
-            }
-            
-            .hero-title {
-                font-size: 2.4rem;
-            }
-            
-            .product-grid {
-                gap: 24px;
-            }
-            
-            .window {
-                margin-bottom: 24px;
-            }
-            
-            .ascii-art {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            body {
-                padding: 16px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Header Window -->
         <div class="window">
             <div class="window-title">
                 <span>◼</span>
@@ -504,15 +16,14 @@
             </div>
             <div class="window-body">
                 <div class="brand">GEOTRASH <span class="number">242</span></div>
-                <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-secondary);">
-                    <span style="color: var(--accent-gold)">Urban Resistance Systems</span> • 
-                    <span style="color: var(--accent-red-light)">Critical Textiles</span> • 
-                    <span style="color: var(--accent-white)">Autonomous Structures</span>
+                <p class="subtitle">
+                    <span class="subtitle-gold">Urban Resistance Systems</span> • 
+                    <span class="subtitle-red">Critical Textiles</span> • 
+                    <span class="subtitle-white">Autonomous Structures</span>
                 </p>
             </div>
         </div>
 
-        <!-- Hero Window -->
         <div class="window">
             <div class="window-title">
                 <span>📁</span>
@@ -542,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Products Window -->
         <div class="window">
             <div class="window-title">
                 <span>📦</span>
@@ -551,27 +61,27 @@
             <div class="window-body">
                 <div class="products">
                     <div class="product-grid">
-                        <div class="product-item">
+                        <div class="product-item" data-id="res-01">
                             <div class="product-content">
                                 <div class="product-code">RES-01 / ARMOR</div>
                                 <p class="product-desc">Not protection from impact, but from consensus. A textile that questions what it means to be defended.</p>
-                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                                <button class="button-98 examine-btn">EXAMINE</button>
                             </div>
                         </div>
                         
-                        <div class="product-item">
+                        <div class="product-item" data-id="res-02">
                             <div class="product-content">
                                 <div class="product-code">RES-02 / MEMBRANE</div>
                                 <p class="product-desc">A surface that filters frequencies. What signals do you choose to let through your personal space?</p>
-                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                                <button class="button-98 examine-btn">EXAMINE</button>
                             </div>
                         </div>
                         
-                        <div class="product-item">
+                        <div class="product-item" data-id="res-03">
                             <div class="product-content">
                                 <div class="product-code">RES-03 / NETWORK</div>
                                 <p class="product-desc">Woven connections that suggest alternative topographies. A map of possible alignments.</p>
-                                <button class="button-98" style="margin-top: 12px; font-size: 0.8rem;">EXAMINE</button>
+                                <button class="button-98 examine-btn">EXAMINE</button>
                             </div>
                         </div>
                     </div>
@@ -579,7 +89,6 @@
             </div>
         </div>
 
-        <!-- Enhanced Terminal Window -->
         <div class="window">
             <div class="window-title">
                 <span>💻</span>
@@ -591,19 +100,17 @@
                         <div class="terminal-dot"></div>
                         <div class="terminal-dot"></div>
                         <div class="terminal-dot"></div>
-                        <span style="margin-left: 12px; font-size: 0.8rem; color: var(--accent-gold);">critical_interface.exe</span>
+                        <span class="terminal-label">critical_interface.exe</span>
                     </div>
                     <div class="terminal-output" id="terminalOutput">
-                        <!-- Initial content will be populated by JavaScript -->
                         <div class="terminal-line">
-                            <span class="terminal-prompt">></span> <span class="terminal-text">Initializing dialogue protocol...</span>
+                            <span class="terminal-prompt">></span> <span class="terminal-text">Initializing thought protocol...</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Philosophy Windows -->
         <div class="window">
             <div class="window-title">
                 <span>📄</span>
@@ -614,28 +121,27 @@
                     <div class="philosophy-section">
                         <div class="section-label">RESISTANCE AS FORM</div>
                         <p class="philosophy-text">
-                            When <span>fashion becomes uniform</span>, resistance becomes necessary. We construct garments that refuse to blend into prescribed backgrounds.
+                            When <span>fashion becomes uniform</span>, resistance becomes necessary.
                         </p>
                     </div>
                     
                     <div class="philosophy-section">
                         <div class="section-label">MEMORY IN MATERIAL</div>
                         <p class="philosophy-text">
-                            Each textile <span>remembers its making</span>. The hands that wove it, the decisions in its construction, the context of its creation.
+                            Each textile <span>remembers its making</span>.
                         </p>
                     </div>
                     
                     <div class="philosophy-section">
                         <div class="section-label">AUTONOMOUS SURFACES</div>
                         <p class="philosophy-text">
-                            These are <span>tools for seeing differently</span>. Not just what you wear, but how you move through contested spaces.
+                            These are <span>tools for seeing differently</span>.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Footer Window -->
         <div class="window">
             <div class="window-title">
                 <span>🔗</span>
@@ -645,246 +151,31 @@
                 <div class="footer">
                     <div class="footer-grid">
                         <div class="footer-item">
-                            <a href="#" class="footer-link" onclick="return false">ARCHIVES</a>
+                            <a href="#" class="footer-link">ARCHIVES</a>
                         </div>
                         <div class="footer-item">
-                            <a href="#" class="footer-link" onclick="return false">CONTEXT</a>
+                            <a href="#" class="footer-link">CONTEXT</a>
                         </div>
                         <div class="footer-item">
-                            <a href="#" class="footer-link" onclick="return false">DIALOGUE</a>
+                            <a href="#" class="footer-link">DIALOGUE</a>
                         </div>
                     </div>
                     
                     <div class="footer-bottom">
-                        <div class="brand" style="font-size: 1.2rem;">GEOTRASH <span class="number">242</span></div>
-                        <div class="copyright">AUTONOMOUS TEXTILE SYSTEMS • CRITICAL FASHION • [RESISTING]</div>
+                        <div class="brand footer-brand">GEOTRASH <span class="number">242</span></div>
+                        <div class="copyright">AUTONOMOUS TEXTILE SYSTEMS</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Status Bar -->
     <div class="status-bar">
-        <div style="color: var(--accent-gold)">▶ CRITICAL SYSTEMS</div>
-        <div style="color: var(--accent-white)" id="statusText">QUESTIONING</div>
-        <div style="color: var(--accent-gold)">◼ ACTIVE</div>
+        <div class="status-left">▶ CRITICAL SYSTEMS</div>
+        <div class="status-center" id="statusText">QUESTIONING</div>
+        <div class="status-right">◼ ACTIVE</div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const terminalOutput = document.getElementById('terminalOutput');
-            
-            // ASCII Art Collection
-            const asciiArt = [
-                `┌─────────────────────────────────────┐
- │                                     │
- │    THE FUTURE ISN'T WHAT IT USED    │
- │          TO BE. IT'S BETTER.        │
- │                                     │
- └─────────────────────────────────────┘`,
-                `╔═════════════════════════════════════╗
- ║                                         ║
- ║   RESISTANCE IS NOT A POSITION TO      ║
- ║   HOLD, BUT A WAY OF MOVING.           ║
- ║                                         ║
- ╚═════════════════════════════════════╝`,
-                `▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
- █                                     █
- █    THINK FOR YOURSELF.             █
- █    QUESTION EVERYTHING.            █
- █                                     █
- ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`
-            ];
-            
-            // Max Headroom quotes
-            const maxHeadroomQuotes = [
-                "The future is a forgotten game that nobody remembers the rules to anymore.",
-                "I've seen the future and it's just like the present, only longer.",
-                "Anybody who isn't confused here isn't thinking clearly.",
-                "Confusion is the welcome mat at the door of creativity.",
-                "In the future, everyone will want to be unique, just like everyone else."
-            ];
-            
-            // Engaging questions for users
-            const questions = [
-                "What surfaces in your life need questioning?",
-                "How does what you wear shape how you think?",
-                "When was the last time you questioned a uniform?",
-                "What patterns are you unconsciously repeating?",
-                "Where do you draw the line between fashion and uniform?",
-                "How much of your environment is designed to be unquestioned?",
-                "What would clothing that teaches look like?",
-                "When does protection become confinement?"
-            ];
-            
-            // Deep messages
-            const deepMessages = [
-                "Systems wear down at the seams first. Look closely.",
-                "The most radical fashion is that which refuses to disappear.",
-                "Every stitch is a decision. Every seam, a boundary.",
-                "Textiles remember. What are yours telling you?",
-                "Resistance starts where comfort ends.",
-                "The uniform wants you to forget you're wearing it.",
-                "Critical fashion isn't about what's new, but what's true.",
-                "Weave your own narrative. The loom is waiting."
-            ];
-            
-            let messageQueue = [];
-            let isProcessing = false;
-            
-            // Function to add a terminal element
-            function addTerminalElement(type, content, delay = 0) {
-                setTimeout(() => {
-                    const element = document.createElement('div');
-                    
-                    switch(type) {
-                        case 'ascii':
-                            element.className = 'ascii-art';
-                            element.textContent = content;
-                            element.style.animationDelay = `${delay}s`;
-                            break;
-                            
-                        case 'quote':
-                            element.className = 'quote';
-                            element.innerHTML = `"${content}"`;
-                            element.style.animationDelay = `${delay}s`;
-                            break;
-                            
-                        case 'question':
-                            element.className = 'question';
-                            element.innerHTML = `? ${content}`;
-                            element.style.animationDelay = `${delay}s`;
-                            break;
-                            
-                        case 'message':
-                            element.className = 'terminal-line';
-                            element.innerHTML = `<span class="terminal-prompt">></span> <span class="terminal-text">${content}</span>`;
-                            element.style.animationDelay = `${delay}s`;
-                            break;
-                            
-                        case 'system':
-                            element.className = 'terminal-line';
-                            element.innerHTML = `<span class="terminal-prompt" style="color: var(--accent-red-light)">SYSTEM></span> <span class="terminal-text">${content}</span>`;
-                            element.style.animationDelay = `${delay}s`;
-                            break;
-                    }
-                    
-                    terminalOutput.appendChild(element);
-                    
-                    // Auto-scroll
-                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                    
-                    // Limit number of lines
-                    if (terminalOutput.children.length > 15) {
-                        terminalOutput.removeChild(terminalOutput.children[0]);
-                    }
-                }, delay * 1000);
-            }
-            
-            // Function to create a dialogue sequence
-            function createDialogueSequence() {
-                const sequences = [
-                    // Sequence 1: ASCII + Quote + Question
-                    () => {
-                        addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 0.1);
-                        addTerminalElement('quote', maxHeadroomQuotes[Math.floor(Math.random() * maxHeadroomQuotes.length)], 1.5);
-                        addTerminalElement('question', questions[Math.floor(Math.random() * questions.length)], 3);
-                    },
-                    
-                    // Sequence 2: Deep message + Follow-up
-                    () => {
-                        addTerminalElement('message', deepMessages[Math.floor(Math.random() * deepMessages.length)], 0.1);
-                        addTerminalElement('system', "Processing your response patterns...", 2);
-                    },
-                    
-                    // Sequence 3: System message + ASCII
-                    () => {
-                        addTerminalElement('system', "Analyzing surface politics...", 0.1);
-                        addTerminalElement('ascii', asciiArt[Math.floor(Math.random() * asciiArt.length)], 1.5);
-                    },
-                    
-                    // Sequence 4: Question + Reflection
-                    () => {
-                        const question = questions[Math.floor(Math.random() * questions.length)];
-                        addTerminalElement('question', question, 0.1);
-                        addTerminalElement('message', "This terminal is waiting for your answer...", 3);
-                    }
-                ];
-                
-                // Pick a random sequence
-                const randomSequence = sequences[Math.floor(Math.random() * sequences.length)];
-                randomSequence();
-            }
-            
-            // Start the dialogue
-            function startDialogue() {
-                // Initial delay
-                setTimeout(() => {
-                    createDialogueSequence();
-                    
-                    // Set up continuous dialogue
-                    const dialogueInterval = setInterval(() => {
-                        createDialogueSequence();
-                    }, 8000 + Math.random() * 7000); // Random interval between 8-15 seconds
-                }, 2000);
-            }
-            
-            // Status bar effects
-            const statusText = document.getElementById('statusText');
-            const statusStates = [
-                "QUESTIONING",
-                "RESISTING",
-                "THINKING",
-                "ANALYZING",
-                "WEAVING",
-                "RECONSIDERING",
-                "REIMAGINING",
-                "PROBING"
-            ];
-            
-            let statusIndex = 0;
-            setInterval(() => {
-                if (statusText) {
-                    statusText.textContent = statusStates[statusIndex];
-                    statusText.style.color = statusIndex % 2 === 0 ? 'var(--accent-gold)' : 'var(--accent-white)';
-                    
-                    // Pulse effect
-                    statusText.style.textShadow = '0 0 8px currentColor';
-                    setTimeout(() => {
-                        statusText.style.textShadow = 'none';
-                    }, 500);
-                    
-                    statusIndex = (statusIndex + 1) % statusStates.length;
-                }
-            }, 3000);
-            
-            // Button interactions
-            const buttons = document.querySelectorAll('.button-98, .footer-link');
-            buttons.forEach(button => {
-                button.addEventListener('mousedown', () => {
-                    button.style.borderColor = 'var(--border-dark) var(--border-light) var(--border-light) var(--border-dark)';
-                    button.style.transform = 'translateY(1px)';
-                });
-                
-                button.addEventListener('mouseup', () => {
-                    button.style.borderColor = 'var(--border-light) var(--border-dark) var(--border-dark) var(--border-light)';
-                    button.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // Clear initial content and start dialogue
-            setTimeout(() => {
-                terminalOutput.innerHTML = '';
-                startDialogue();
-            }, 1000);
-            
-            // Terminal click interaction
-            terminalOutput.addEventListener('click', () => {
-                addTerminalElement('message', "The interface responds to your attention...", 0.1);
-                addTerminalElement('question', questions[Math.floor(Math.random() * questions.length)], 1);
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
