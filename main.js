@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 console.log('GEOTRASH 242 - SYSTEM ONLINE');
-    
-    // Random cyberpunk/abstract image URLs
+ }
+
+  // Random cyberpunk/abstract image URLs
     const randomImages = [
         'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop&auto=format',
         'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop&auto=format',
@@ -24,7 +25,7 @@ console.log('GEOTRASH 242 - SYSTEM ONLINE');
                 img.alt = `Product ${i}`;
                 container.appendChild(img);
             }
-        }
+        }  
     }
 
     const terminalOutput = document.getElementById('terminalOutput');
