@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log('GEOTRASH 242 - SYSTEM ONLINE');
  }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, inserting images...');
+    insertRandomImages();
+});
+
   // Random cyberpunk/abstract image URLs
     const randomImages = [
         'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop&auto=format',
@@ -16,17 +21,41 @@ console.log('GEOTRASH 242 - SYSTEM ONLINE');
 
     // Insert random images into cards
     function insertRandomImages() {
-        for (let i = 1; i <= 3; i++) {
-            const container = document.getElementById(`card-image-${i}`);
-            if (container) {
-                const img = document.createElement('img');
-                const randomIndex = Math.floor(Math.random() * randomImages.length);
-                img.src = randomImages[randomIndex];
-                img.alt = `Product ${i}`;
-                container.appendChild(img);
-            }
-        }  
+    for (let i = 1; i <= 3; i++) {
+        const container = document.getElementById(`card-image-${i}`);
+        
+        if (container) {
+            console.log(`Found container #card-image-${i}`);
+            
+            // Clear existing content if needed
+            container.innerHTML = '';
+            
+            const img = document.createElement('img');
+            const randomIndex = Math.floor(Math.random() * randomImages.length);
+            
+            // Set image attributes
+            img.src = randomImages[randomIndex];
+            img.alt = `Product ${i}`;
+            img.className = 'card-image';
+            
+            // Add error handling
+            img.onerror = function() {
+                console.error(`Failed to load image: ${img.src}`);
+                // Optional: Set a fallback image
+                this.src = 'https://via.placeholder.com/400x300/1a1a2e/e0e0ff?text=Cyber+Image';
+            };
+            
+            img.onload = function() {
+                console.log(`Image ${i} loaded successfully`);
+            };
+            
+            container.appendChild(img);
+        } else {
+            console.error(`Container #card-image-${i} not found!`);
+        }
     }
+}
+
 
     const terminalOutput = document.getElementById('terminalOutput');
     const statusText = document.getElementById('statusText');
