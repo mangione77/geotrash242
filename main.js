@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("GEOTRASH 242 - SYSTEM ONLINE");
-  insertRandomImages();
+  console.log("GEOTRASH 242 - SYSTEM ONLINE")
+  
 
   const randomImages = [
     "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop&auto=format",
