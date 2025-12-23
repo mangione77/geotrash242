@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 console.log('GEOTRASH 242 - SYSTEM ONLINE');
+ insertRandomImages();
  }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, inserting images...');
-    insertRandomImages();
-});
 
   // Random cyberpunk/abstract image URLs
     const randomImages = [
