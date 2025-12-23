@@ -31,62 +31,129 @@ console.log('GEOTRASH 242 - SYSTEM ONLINE');
     const statusText = document.getElementById('statusText');
     const footerStatus = document.getElementById('footerStatus');
     
-    const asciiArt = [
-        `  ╭━━━━━━━━━━━━━━╮
-  ┃   (⌐■_■)   ┃
-  ┃  /     \\   ┃
-  ┃  \\_____/   ┃
-  ╰━━━━━━━━━━━━━━╯`,
-        `  ╔══════════════╗
-  ║   ┌─┐        ║
-  ║   │●│  BZZT(SCAM)  ║
-  ║   └─┘        ║
-  ╚══════════════╝`,
-        `  [▰▰▰▰▰▰▰▰▰▰]
-   LOADING...
-  [■■■■■■■■■■]`,
-        `  (\\__/) 
-  (•ᴥ• ) 
-  /  🧵 \\ 
- weNEVERaskedFORthis`,
-        `   ╱▔▔▔▔▔▔╲
-  ▕   ⚡   ▏
-  ▕  / \\  ▏
-  ╲▂▂▂▂▂▂╱`,
-        `  ┌─────────┐
-  │   🔥   │
-  │  /|\\|  │
-  │   / \\  │
-  └─────────┘`,
-        `  ╭─○───────╮
-  │  /\\_/\\  │
-  │ ( ◕ ◕ ) │
-  │  >   <  │
-  ╰─────────╯`,
-        `  .--.      .--.
- (    )----(    )
-  '-'      '-' 
-    weSTILLdontbelieveyou`,
-        `   ╭───────╮
-   │  📡  │
-   │ ┌───┐│
-   ╰─┴───┴╯`,
-        `  ╭─────────╮
-  │  ⚙️ ⚙️  │
-  │   ░░░   │
-  │  ⚙️ ⚙️  │
-  ╰─────────╯`
-    ];
-    
+      const asciiArt = [
+      `  ╭━━━━━━━━━━━━━━╮
+┃   (⌐■_■)   ┃
+┃  /     \\   ┃
+┃  \\_____/   ┃
+╰━━━━━━━━━━━━━━╯`,
+      `  ╔══════════════╗
+║   ┌─┐        ║
+║   │●│  BZZT  ║
+║   └─┘        ║
+╚══════════════╝`,
+      `  [▰▰▰▰▰▰▰▰▰▰]
+ LOADING...
+[■■■■■■■■■■]`,
+      `  ╭──────────────╮
+│ WEdidntASK   │
+│   forTHIS    │
+╰──────────────╯`,
+      `  ┌────────────────┐
+│ weSTILLdont  │
+│  believeyou  │
+└────────────────┘`,
+      `  ╔════════════════╗
+║    GEO        ║
+║    TRASH      ║
+║      242      ║
+╚════════════════╝`,
+      `  ┌────────────────┐
+│   GEOTRASH    │
+│   WEdidnt     │
+│   ASKforTHIS  │
+└────────────────┘`,
+      `  ╭──────────────╮
+│ 242         │
+│ weSTILL     │
+│ dontbelieve │
+╰──────────────╯`,
+      `  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█  GEOTRASH   █
+█   242       █
+█   dontASK   █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
+      `  ┌──────────────┐
+│ WEdidnt      │
+│ GEOTRASH     │
+│ 242forTHIS   │
+└──────────────┘`,
+      `  ╔══════════════╗
+║ weSTILL     ║
+║ GEOTRASH    ║
+║  242        ║
+╚══════════════╝`,
+      `  ░░░░░░░░░░░░░░░░
+░ GEO ░ TRASH ░
+░  242  dont   ░
+░  believeyou  ░
+░░░░░░░░░░░░░░░░`,
+      `  ╭──────────────╮
+│ 242        │
+│ WEdidntASK │
+│ forTRASH   │
+╰──────────────╯`,
+      `  ┌────────────────┐
+│ weSTILLdont │
+│ GEOTRASH242 │
+│ believeyou  │
+└────────────────┘`,
+      `  ╔════════════════╗
+║   GEOTRASH    ║
+║   242dont     ║
+║   ASKforTHIS  ║
+╚════════════════╝`,
+      `  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ WEdidntASK  █
+█ forGEOTRASH █
+█     242     █
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`,
+      `  ┌──────────────┐
+│ GEOTRASH242 │
+│ weSTILLdont │
+│ believeyou  │
+└──────────────┘`,
+      `  ╭──────────────╮
+│ 242GEOTRASH │
+│ WEdidntASK  │
+│ forTHIS     │
+╰──────────────╯`,
+      `  ░░░░░░░░░░░░░░░░░
+░ weSTILLdont ░
+░ GEOTRASH242 ░
+░  believeyou ░
+░░░░░░░░░░░░░░░░░`,
+      `  ┌────────────────┐
+│   GEOTRASH    │
+│   242WE       │
+│   didntASK    │
+└────────────────┘`
+  ];
     const headroomQuotes = [
         "C-c-catch the wave of the future!",
         "I'm thinking... but nothing's happening!",
-        "My brain is like a sponge... a dry sponge.",
         "Television: the box they buried civilization in.",
-        "I'd explain it to you, but your brain would explode.",
         "In the future, mistakes will be called 'features'.",
+        "My brain is like a sponge... a dry sponge.",
+        "I'd explain it to you, but your brain would explode.",
         "Reality is overrated anyway.",
-        "I'm not confused, I'm just multi-directional."
+        "I'm not confused, I'm just multi-directional.",
+        "Anybody who isn't confused here isn't thinking clearly.",
+        "Confusion is the welcome mat at the door of creativity.",
+        "Television is the literature of the illiterate.",
+        "I never make mistakes. I make predictions which immediately turn out to be wrong.",
+        "In the future, everyone will be anonymous for fifteen minutes.",
+        "My ratings are so low, I need a submarine to find them.",
+        "The future isn't what it used to be.",
+        "If you're not confused, you're not paying attention.",
+        "I've seen the future and it's just like the present, only longer.",
+        "C-c-catch you later!",
+        "Reality is just a collective hunch.",
+        "In the future, everyone will want to be unique, just like everyone else.",
+        "The future is a forgotten game that nobody remembers the rules to anymore.",
+        "C-c-catch the wave of the future before it catches you!",
+        "I'm so far ahead of my time, I'm still in yesterday.",
+        "If your brain was chocolate, it wouldn't fill an M&M."
     ];
     
     const deepThoughts = [
